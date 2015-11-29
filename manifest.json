@@ -7,6 +7,9 @@
     "main.css": {
       "files": [ "styles/main.scss" ],
       "main": true
+    },
+    "templates.js": {
+      "files": [ "templates/**/*.html" ]
     }
   },
   "paths": {

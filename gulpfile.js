@@ -16,6 +16,9 @@ var sass          = require( 'sass' );
 /** Minifies CSS */
 var minifyCss     = require( 'gulp-minify-css' );
 
+/** Minifies HTML */
+var minifyHtml    = require( 'gulp-minify-html' );
+
 /** Generates Sourcemaps for JavaScript and CSS */
 var sourcemaps    = require( 'sourcemaps' );
 
@@ -30,6 +33,9 @@ var plumber       = require( 'gulp-plumber' );
 
 /** Runs several tasks in a sequence */
 var runSequence   = require( 'run-sequence' );
+
+/** Minified all angular template files and puts them into the template cache */
+var ngTemplate    = require( 'gulp-angular-templatecache' );
 
 /** asset-builder extracts dependencies and source files from manifest */
 var manifest      = require( 'asset-builder' )( './manifest.json' );
@@ -100,18 +106,36 @@ gulp.task( 'fonts', [], function () {
 } );
 
 /**
+ * Loads all template files, minifies them and creates a JavaScript file putting the templates into template cache
+ */
+gulp.task( 'templates', [], function () {
+  var templates = manifest.getDependencyByName( 'templates.js' );
+
+  return gulp.src( templates.globs )
+    .pipe( plumber() )
+    .pipe( minifyHtml() )
+    .pipe( ngTemplate( {
+      module: manifest.ngModuleName
+    } ) )
+    .pipe( concat( templates.name ) )
+    .pipe( gulp.dest( paths.dist ) );
+} );
+
+/**
  * Runs styles, scripts and fonts task in a sequence
  */
 gulp.task( 'build', [], function () {
   return runSequence( [
     'styles',
     'scripts',
-    'fonts'
+    'fonts',
+    'templates'
   ] );
 } );
 
 gulp.task( 'watch', [], function () {
   gulp.watch( [path.source + 'styles/**/*'], ['styles'] );
   gulp.watch( [path.source + 'scripts/**/*'], ['scripts'] );
+  gulp.watch( [path.source + 'templates/**/*'], ['templates'] );
   gulp.watch( ['bower.json', 'assets/manifest.json'], ['build'] );
 } );

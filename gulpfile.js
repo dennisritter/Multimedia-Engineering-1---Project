@@ -71,6 +71,9 @@ gulp.task( 'scripts', [ 'jshint' ], function () {
     .pipe( gulp.dest( paths.dist ) );
 } );
 
+/**
+ * Compiles SASS to CSS, concatenates all CSS files, autoprefixes properties, minifies CSS and adds a sourcemap
+ */
 gulp.task( 'styles', [], function () {
   var css = manifest.getDependencyByName( 'main.css' );
 

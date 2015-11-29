@@ -3,11 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Petsitting</title>
-
+  <base href="/" />
   <link rel="stylesheet" href="dist/styles/main.css" />
 </head>
 
 <body>
+  <ng-include src="'components/header.html'"></ng-include>
+  <ng-view></ng-view>
+
   <script type="text/javascript" src="dist/scripts/main.js"></script>
   <script type="text/javascript" src="dist/scripts/templates.js"></script>
 </body>

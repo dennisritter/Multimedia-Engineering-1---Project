@@ -1,1 +1,4 @@
-angular.module( 'petsitting', [] );
+angular.module( 'petsitting', [
+  'ngMessages',
+  'ngRoute'
+] );

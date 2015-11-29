@@ -1,0 +1,20 @@
+{
+  "name": "bht-mme-petsitting",
+  "description": "",
+  "main": "public/index.html",
+  "authors": [
+    "Jannik Portz",
+    "Dennis Ritter"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

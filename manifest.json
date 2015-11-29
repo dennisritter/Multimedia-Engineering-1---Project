@@ -14,7 +14,7 @@
   },
   "paths": {
     "source": "./",
-    "dist": "public/app/"
+    "dist": "public/dist/"
   },
   "ngModuleName": "petsitting"
 }

@@ -132,8 +132,8 @@ gulp.task( 'build', [], function () {
 } );
 
 gulp.task( 'watch', [], function () {
-  gulp.watch( [path.source + 'styles/**/*'], ['styles'] );
-  gulp.watch( [path.source + 'scripts/**/*'], ['scripts'] );
-  gulp.watch( [path.source + 'templates/**/*'], ['templates'] );
+  gulp.watch( [paths.source + 'styles/**/*'], ['styles'] );
+  gulp.watch( [paths.source + 'scripts/**/*'], ['scripts'] );
+  gulp.watch( [paths.source + 'templates/**/*'], ['templates'] );
   gulp.watch( ['bower.json', 'assets/manifest.json'], ['build'] );
 } );

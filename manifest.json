@@ -2,7 +2,13 @@
   "dependencies": {
     "main.js": {
       "files": [ "scripts/**/*.js" ],
-      "bower": [ "angular", "jquery", "bootstrap-sass" ]
+      "bower": [
+        "jquery",
+        "bootstrap-sass",
+        "angular",
+        "angular-messages",
+        "angular-route"
+      ]
     },
     "main.css": {
       "files": [ "styles/main.scss" ],

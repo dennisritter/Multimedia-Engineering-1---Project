@@ -108,12 +108,12 @@ gulp.task( 'fonts', [], function () {
  */
 gulp.task( 'templates', [], function () {
   var templates = manifest.getDependencyByName( 'templates.js' );
-
+  console.log( manifest.config );
   return gulp.src( templates.globs )
     .pipe( plumber() )
     .pipe( minifyHtml() )
     .pipe( ngTemplate( {
-      module: manifest.ngModuleName
+      module: manifest.config.ngModuleName
     } ) )
     .pipe( concat( templates.name ) )
     .pipe( gulp.dest( paths.dist + 'scripts' ) );

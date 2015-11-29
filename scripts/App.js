@@ -1,1 +1,1 @@
-angular.module( 'petsitting', [] );
+angular.module( 'petsitting' );

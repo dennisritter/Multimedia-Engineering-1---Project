@@ -17,5 +17,7 @@
     "dist": "public/dist/",
     "bower": "bower_components/"
   },
-  "ngModuleName": "petsitting"
+  "config": {
+    "ngModuleName": "petsitting"
+  }
 }

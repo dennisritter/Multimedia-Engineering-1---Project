@@ -1,0 +1,13 @@
+{
+  "name": "bht-mme-petsitting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "public/index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/jportz/bht-mme1-angular.git"
+  },
+  "author": "Jannik Portz, Dennis Ritter",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/jportz/bht-mme1-angular#readme"
+}

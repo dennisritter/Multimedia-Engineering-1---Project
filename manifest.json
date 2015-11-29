@@ -2,7 +2,7 @@
   "dependencies": {
     "main.js": {
       "files": [ "scripts/**/*.js" ],
-      "main": true
+      "bower": [ "angular", "jquery", "bootstrap-sass" ]
     },
     "main.css": {
       "files": [ "styles/main.scss" ],
@@ -14,7 +14,8 @@
   },
   "paths": {
     "source": "./",
-    "dist": "public/dist/"
+    "dist": "public/dist/",
+    "bower": "bower_components/"
   },
   "ngModuleName": "petsitting"
 }

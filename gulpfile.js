@@ -8,10 +8,10 @@ var autoprefixer  = require( 'gulp-autoprefixer' );
 var concat        = require( 'gulp-concat' );
 
 /** Validates JavaScript syntax and semantics */
-var jshint        = require( 'jshint' );
+var jshint        = require( 'gulp-jshint' );
 
 /** Compiles SASS/SCSS to CSS */
-var sass          = require( 'sass' );
+var sass          = require( 'gulp-sass' );
 
 /** Minifies CSS */
 var minifyCss     = require( 'gulp-minify-css' );
@@ -20,7 +20,7 @@ var minifyCss     = require( 'gulp-minify-css' );
 var minifyHtml    = require( 'gulp-minify-html' );
 
 /** Generates Sourcemaps for JavaScript and CSS */
-var sourcemaps    = require( 'sourcemaps' );
+var sourcemaps    = require( 'gulp-sourcemaps' );
 
 /** Compresses JS by stripping whitespace, removing comments and renaming variables */
 var uglify        = require( 'gulp-uglify' );
@@ -38,7 +38,7 @@ var runSequence   = require( 'run-sequence' );
 var ngTemplate    = require( 'gulp-angular-templatecache' );
 
 /** asset-builder extracts dependencies and source files from manifest */
-var manifest      = require( 'asset-builder' )( './manifest.json' );
+var manifest      = require( 'asset-builder' )( './manifest.json');
 
 /** Contains lists of third-party js and css unter the keys 'js', 'css' and 'fonts' */
 var globs         = manifest.globs;
@@ -55,9 +55,7 @@ var paths         = manifest.paths;
  */
 gulp.task( 'jshint', [], function () {
   return gulp.src( [ 'bower.json', 'gulpfile.js' ].concat( project.js ) )
-    .pipe( jshint() )
-    .pipe( jshint.reporter( 'jshint-stylish' ) )
-    .pipe( jshint.reporter( 'fail' ) );
+    .pipe( jshint() );
 } );
 
 /**
@@ -74,7 +72,7 @@ gulp.task( 'scripts', [ 'jshint' ], function () {
     .pipe( sourcemaps.write( '.', {
       sourceRoot: '/scripts'
     } ) )
-    .pipe( gulp.dest( paths.dist ) );
+    .pipe( gulp.dest( paths.dist  + 'scripts' ) );
 } );
 
 /**
@@ -93,7 +91,7 @@ gulp.task( 'styles', [], function () {
     .pipe( sourcemaps.write( '.', {
       sourceRoot: '/styles'
     } ) )
-    .pipe( gulp.dest( paths.dist ) );
+    .pipe( gulp.dest( paths.dist + 'styles' ) );
 } );
 
 /**
@@ -118,7 +116,7 @@ gulp.task( 'templates', [], function () {
       module: manifest.ngModuleName
     } ) )
     .pipe( concat( templates.name ) )
-    .pipe( gulp.dest( paths.dist ) );
+    .pipe( gulp.dest( paths.dist + 'scripts' ) );
 } );
 
 /**

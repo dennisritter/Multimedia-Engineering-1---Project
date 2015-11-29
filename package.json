@@ -9,5 +9,9 @@
   },
   "author": "Jannik Portz, Dennis Ritter",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/jportz/bht-mme1-angular#readme"
+  "homepage": "https://bitbucket.org/jportz/bht-mme1-angular#readme",
+  "devDependencies": {
+    "bower": "^1.6.8",
+    "gulp": "^3.9.0"
+  }
 }

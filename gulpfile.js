@@ -84,7 +84,9 @@ gulp.task( 'styles', [], function () {
   return gulp.src( css.globs )
     .pipe( plumber() )
     .pipe( sourcemaps.init() )
-    .pipe( sass() )
+    .pipe( sass({
+      errorLogToConsole: false
+    }) )
     .pipe( concat( css.name ) )
     .pipe( autoprefixer() )
     .pipe( minifyCss() )
@@ -108,7 +110,7 @@ gulp.task( 'fonts', [], function () {
  */
 gulp.task( 'templates', [], function () {
   var templates = manifest.getDependencyByName( 'templates.js' );
-  console.log( manifest.config );
+
   return gulp.src( templates.globs )
     .pipe( plumber() )
     .pipe( minifyHtml() )

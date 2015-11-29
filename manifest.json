@@ -8,7 +8,8 @@
         "angular",
         "angular-messages",
         "angular-route"
-      ]
+      ],
+      "main": true
     },
     "main.css": {
       "files": [ "styles/main.scss" ],

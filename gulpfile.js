@@ -13,6 +13,9 @@ var jshint        = require( 'jshint' );
 /** Compiles SASS/SCSS to CSS */
 var sass          = require( 'sass' );
 
+/** Minifies CSS */
+var minifyCss     = require( 'gulp-minify-css' );
+
 /** Generates Sourcemaps for JavaScript and CSS */
 var sourcemaps    = require( 'sourcemaps' );
 

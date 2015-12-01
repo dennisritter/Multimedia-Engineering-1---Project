@@ -7,7 +7,8 @@
         "bootstrap-sass",
         "angular",
         "angular-messages",
-        "angular-route"
+        "angular-route",
+        "angular-google-maps"
       ],
       "main": true
     },

@@ -1,4 +1,5 @@
 angular.module( 'petsitting', [
   'ngMessages',
-  'ngRoute'
+  'ngRoute',
+  'uiGmapgoogle-maps'
 ] );

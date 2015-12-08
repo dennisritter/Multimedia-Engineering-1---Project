@@ -8,7 +8,8 @@
         "angular",
         "angular-messages",
         "angular-route",
-        "angular-google-maps"
+        "angular-google-maps",
+        "angular-simple-logger"
       ],
       "main": true
     },

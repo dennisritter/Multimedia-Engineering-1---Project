@@ -1,0 +1,14 @@
+.brand-logo-text {
+  font-family: $brand-logo-font;
+  font-size: 3em;
+  color: white;
+  padding: 7px 10px;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.topbar {
+  background-color: $brand-primary;
+}

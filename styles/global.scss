@@ -6,6 +6,15 @@ a {
   &:hover {
     text-decoration: none ;
   }
+  &:active {
+    text-decoration: none;
+  }
+  &:visited {
+    text-decoration: none;
+  }
+  &:focus {
+    text-decoration: none;
+  }
 }
 
 ul {

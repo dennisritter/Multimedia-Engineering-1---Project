@@ -1,6 +1,6 @@
 <section class="wrap-submit-form" ng-controller="SubmitController">
   <div class="container">
-    <form name="submitForm" novalidate>
+    <form name="submitForm" ng-submit="save()" novalidate>
       <div class="row">
         <ng-include src="'layout/submit/column-1.html'"></ng-include>
         <ng-include src="'layout/submit/column-2.html'"></ng-include>

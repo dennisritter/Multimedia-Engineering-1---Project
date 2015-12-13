@@ -9,12 +9,25 @@ angular.module('petsitting').controller( 'SubmitController', [ '$scope', 'Storag
     bird: 'Vogel'
   };
 
-  $scope.save = function ( form ) {
+  $scope.save = function () {
+    var form = $scope.submitForm;
+
+    // If submitForm is invalid, mark all inputs as dirty/touched to force error message and do not actually submit the data.
     if ( !form.$valid ) {
-      console.error( 'Form invalid', form );
+      for ( var key in form ) {
+        if ( !form.hasOwnProperty( key ) || typeof form[key] !== 'object' || !form[key].hasOwnProperty('$modelValue') ) {
+          continue;
+        }
+
+        var input = form[key];
+        input.$dirty = true;
+        input.$touched = true;
+      }
+
       return;
     }
-    console.log( 'save', $scope.model );
+
+    console.log( 'submitting...', $scope.model );
   };
 
 } ] );

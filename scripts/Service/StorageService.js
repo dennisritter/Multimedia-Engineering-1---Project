@@ -1,4 +1,4 @@
-angular.module('petsitting').service( 'StorageService', [ '$http', '$q', function ( $http, $q ) {
+angular.module('petsitting').service( 'StorageService', [ '$http', '$q', '$timeout', function ( $http, $q, $timeout ) {
 
   var emptyModel = {
     "firstName": "",
@@ -43,8 +43,24 @@ angular.module('petsitting').service( 'StorageService', [ '$http', '$q', functio
     return angular.copy( emptyModel );
   };
 
+  /**
+   * Sends a persist request with the provided data to the service.
+   * @param     data    The data model to persist
+   * @returns           Promise representing the persisting process
+   */
+  var persist = function ( data ) {
+    var defer = $q.defer();
+
+    $timeout( function () {
+      defer.resolve( data );
+    }, 500 );
+
+    return defer.promise;
+  };
+
   return {
     getAll: getAll,
+    persist: persist,
     getEmptyModel: getEmptyModel
   };
 

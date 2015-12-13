@@ -14,3 +14,23 @@
     }
   }
 }
+
+.form-messages {
+  padding: 0;
+  margin: 0;
+  
+  li {
+    background: lighten( $brand-red, 20% );
+    display: block;
+    padding: 10px;
+    border-left: 5px solid $brand-red-darker;
+    color: $brand-red-darker;
+    
+    &.success {
+      $green-dark: darken( saturate( $brand-green, 10% ), 30% );
+      border-color: $green-dark;
+      color: $green-dark;
+      background: lighten( $brand-green, 20% );
+    }
+  }
+}

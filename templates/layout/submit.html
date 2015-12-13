@@ -2,6 +2,16 @@
   <div class="container">
     <form name="submitForm" ng-submit="save()" novalidate>
       <div class="row">
+        <div class="col-xs-12">
+          <ul class="form-messages" ng-messages="messages">
+            <li class="success" ng-message="saved">Ihre Daten wurden erfolgreich gespeichert.</li>
+            <li ng-message="dataInvalid">Die eingegebenen Daten sind ungültig.</li>
+            <li ng-message="unknownError">Beim Speichern Ihrer Daten ist ein unbekannter Fehler aufgetreten. Bitte versuchen Sie es später erneut.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
         <ng-include src="'layout/submit/column-1.html'"></ng-include>
         <ng-include src="'layout/submit/column-2.html'"></ng-include>
       </div>

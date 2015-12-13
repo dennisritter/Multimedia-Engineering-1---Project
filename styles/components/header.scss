@@ -17,29 +17,26 @@
 }
 
 .primary-navigation {
-  a {
-    background-color: $brand-red;
-    padding: 12px 0;
-    display: block;
-    text-align: center;
-    color: white;
-    font-weight: bold;
-
-    &:hover {
-      background-color: $brand-red-darker;
-    }
-  }
-
-  li:first-child {
+  li {
     a {
+      background-color: $brand-red;
+      padding: 12px 0;
+      display: block;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+
+      &:hover {
+        background-color: $brand-red-darker;
+      }
+    }
+
+    &:first-child a {
       border-bottom-left-radius: 15px;
     }
-  }
 
-  li:last-child {
-    a {
+    &:last-child a {
       border-bottom-right-radius: 15px;
     }
   }
 }
-

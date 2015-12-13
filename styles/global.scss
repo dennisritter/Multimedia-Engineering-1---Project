@@ -1,19 +1,6 @@
-body {
-  font-size: 16px;
-}
-
 a {
-  &:hover {
+  &:hover, &:active, &:visited, &:focus {
     text-decoration: none ;
-  }
-  &:active {
-    text-decoration: none;
-  }
-  &:visited {
-    text-decoration: none;
-  }
-  &:focus {
-    text-decoration: none;
   }
 }
 
@@ -22,4 +9,3 @@ ul {
   margin: 0;
   padding: 0;
 }
-

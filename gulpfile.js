@@ -120,6 +120,7 @@ gulp.task( 'templates', [], function () {
       module: manifest.config.ngModuleName
     } ) )
     .pipe( concat( templates.name ) )
+    .pipe( uglify() )
     .pipe( gulp.dest( paths.dist + 'scripts' ) );
 } );
 

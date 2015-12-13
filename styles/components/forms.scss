@@ -1,0 +1,16 @@
+.form-control-messages {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+
+  li {
+    display: block;
+    color: $brand-red-darker;
+    font-size: $font-size-small;
+    margin-top: 3px;
+
+    &.success {
+      color: $brand-green;
+    }
+  }
+}

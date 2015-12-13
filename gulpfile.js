@@ -49,6 +49,9 @@ var project       = manifest.getProjectGlobs();
 /** Contains the source and dist paths */
 var paths         = manifest.paths;
 
+/** Replacement for native gulp.watch, aware of new and deleted files */
+var watch         = require( 'gulp-watch' );
+
 /**
  * Validates all JavaScript including the bower.json configuration, the gulpfile
  * and the first-party JavaScript with jshint.
@@ -137,8 +140,19 @@ gulp.task( 'build', [], function () {
 } );
 
 gulp.task( 'watch', [], function () {
-  gulp.watch( [paths.source + 'styles/**/*'], ['styles'] );
-  gulp.watch( [paths.source + 'scripts/**/*'], ['scripts'] );
-  gulp.watch( [paths.source + 'templates/**/*'], ['templates'] );
-  gulp.watch( ['bower.json', 'assets/manifest.json'], ['build'] );
+  watch( paths.source + 'styles/**/*.scss', function () {
+    gulp.start( 'styles' );
+  } );
+
+  watch( paths.source + 'scripts/**/*.js', function () {
+    gulp.start( 'scripts' );
+  } );
+
+  watch( paths.source + 'templates/**/*.html', function () {
+    gulp.start( 'templates' );
+  } );
+
+  watch( [ 'bower.json', 'assets/manifest.json' ], function () {
+    gulp.start( 'build' );
+  } );
 } );

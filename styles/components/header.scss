@@ -1,0 +1,45 @@
+.brand-logo-text {
+  font-family: $brand-logo-font;
+  font-size: 3em;
+  color: white;
+  padding: 7px 10px;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.topbar {
+  background-color: $brand-primary;
+  position: relative;
+  z-index: 100;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.primary-navigation {
+  a {
+    background-color: $brand-red;
+    padding: 12px 0;
+    display: block;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+
+    &:hover {
+      background-color: $brand-red-darker;
+    }
+  }
+
+  li:first-child {
+    a {
+      border-bottom-left-radius: 15px;
+    }
+  }
+
+  li:last-child {
+    a {
+      border-bottom-right-radius: 15px;
+    }
+  }
+}
+

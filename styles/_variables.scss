@@ -1,7 +1,14 @@
 // Colors
-$brand-red:     #FF6464;
-$brand-orange:  #FFBD67;
-$brand-yellow:  #F8FE85;
-$brand-green:   #5BE7A9;
+$brand-red:         rgb(255, 60, 60);
+$brand-red-darker:  rgb(200, 20, 20);
+$brand-orange:      #FFBD67;
+$brand-yellow:      #F8FE85;
+$brand-green:       #5BE7A9;
 
-$brand-primary: $brand-red;
+$brand-primary:     $brand-red;
+
+// Fonts
+$brand-logo-font:   Lobster;
+
+// Grid
+$container-width-lg: 1024px;

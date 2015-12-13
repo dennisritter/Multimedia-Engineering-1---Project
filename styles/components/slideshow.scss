@@ -1,0 +1,21 @@
+#animal-slideshow {
+  position: relative;
+  margin-top: -42px;
+  z-index: -1;
+
+  figure {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+
+    &:first-child {
+      position: relative;
+    }
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+}

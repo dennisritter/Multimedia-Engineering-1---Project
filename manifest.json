@@ -1,7 +1,9 @@
 {
   "dependencies": {
-    "main.js": {
-      "files": [ "scripts/**/*.js" ],
+    "app.js": {
+      "files": [ "scripts/**/*.js" ]
+    },
+    "libs.js": {
       "bower": [
         "jquery",
         "bootstrap-sass",
@@ -10,8 +12,7 @@
         "angular-route",
         "angular-google-maps",
         "angular-simple-logger"
-      ],
-      "main": true
+      ]
     },
     "main.css": {
       "files": [ "styles/main.scss" ],

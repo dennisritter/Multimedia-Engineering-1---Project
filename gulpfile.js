@@ -52,6 +52,19 @@ var paths         = manifest.paths;
 /** Replacement for native gulp.watch, aware of new and deleted files */
 var watch         = require( 'gulp-watch' );
 
+/** Function performing all script tasks for the specified globs */
+var scriptTasks = function ( scriptGlobs, fileName ) {
+  return gulp.src( scriptGlobs )
+    .pipe( plumber() )
+    .pipe( sourcemaps.init() )
+    .pipe( concat( fileName ) )
+    .pipe( uglify() )
+    .pipe( sourcemaps.write( '.', {
+      sourceRoot: '/scripts'
+    } ) )
+    .pipe( gulp.dest( paths.dist  + 'scripts' ) );
+};
+
 /**
  * Validates all JavaScript including the bower.json configuration, the gulpfile
  * and the first-party JavaScript with jshint.
@@ -61,21 +74,16 @@ gulp.task( 'jshint', [], function () {
     .pipe( jshint() );
 } );
 
-/**
- * Concatenates third-party and third-party js, uglifies code and adds a sourcemap
- */
-gulp.task( 'scripts', [ 'jshint' ], function () {
-  var js = manifest.getDependencyByName( 'main.js' );
+/** Performs script tasks for all first-party scripts */
+gulp.task( 'scripts.app', [ 'jshint' ], function () {
+  var js = manifest.getDependencyByName( 'app.js' );
+  return scriptTasks( js.globs, js.name );
+} );
 
-  return gulp.src( js.globs )
-    .pipe( plumber() )
-    .pipe( sourcemaps.init() )
-    .pipe( concat( js.name ) )
-    .pipe( uglify() )
-    .pipe( sourcemaps.write( '.', {
-      sourceRoot: '/scripts'
-    } ) )
-    .pipe( gulp.dest( paths.dist  + 'scripts' ) );
+/** Performs script tasks for all first-party scripts */
+gulp.task( 'scripts.libs', [], function () {
+  var js = manifest.getDependencyByName( 'libs.js' );
+  return scriptTasks( js.globs, js.name );
 } );
 
 /**
@@ -133,7 +141,8 @@ gulp.task( 'templates', [], function () {
 gulp.task( 'build', [], function () {
   return runSequence( [
     'styles',
-    'scripts',
+    'scripts.libs',
+    'scripts.app',
     'fonts',
     'templates'
   ] );
@@ -145,7 +154,7 @@ gulp.task( 'watch', [], function () {
   } );
 
   watch( paths.source + 'scripts/**/*.js', function () {
-    gulp.start( 'scripts' );
+    gulp.start( 'scripts.app' );
   } );
 
   watch( paths.source + 'templates/**/*.html', function () {

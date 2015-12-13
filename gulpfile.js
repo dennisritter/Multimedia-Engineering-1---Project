@@ -89,7 +89,9 @@ gulp.task( 'styles', [], function () {
     }) )
     .pipe( concat( css.name ) )
     .pipe( autoprefixer() )
-    .pipe( minifyCss() )
+    .pipe( minifyCss( {
+      processImport: false
+    } ) )
     .pipe( sourcemaps.write( '.', {
       sourceRoot: '/styles'
     } ) )

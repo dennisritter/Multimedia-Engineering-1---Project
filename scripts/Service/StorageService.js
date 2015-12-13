@@ -11,7 +11,7 @@ angular.module('petsitting').service( 'StorageService', [ '$http', '$q', functio
     "animalType": "",
     "animalBreed": "",
     "animalName": "",
-    "animalAge": 0,
+    "animalAge": "",
     "description": "",
     "email": "",
     "phone": ""

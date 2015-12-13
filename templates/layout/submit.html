@@ -2,87 +2,8 @@
   <div class="container">
     <form name="submitForm" novalidate>
       <div class="row">
-        <div class="col-xs-12 col-sm-6">
-          <h2>Angaben zur Verleihung</h2>
-
-          <div class="form-group">
-            <label for="owner-first-name">Vorname</label>
-            <input type="text" id="owner-first-name" name="ownerFirstName" class="form-control" ng-model="model.ownerFirstName" required />
-            <form-control-messages input="submitForm.ownerFirstName"></form-control-messages>
-          </div>
-
-          <div class="form-group">
-            <label for="owner-last-name">Nachname</label>
-            <input type="text" id="owner-last-name" name="ownerLastName" class="form-control" ng-model="model.ownerLastName" required/>
-            <form-control-messages input="submitForm.ownerLastName"></form-control-messages>
-          </div>
-
-          <div class="form-group">
-            <label for="owner-email">E-Mail-Adresse</label>
-            <input type="email" id="owner-email" name="ownerEmail" class="form-control" ng-model="model.ownerEmail" required/>
-            <form-control-messages input="submitForm.ownerEmail"></form-control-messages>
-          </div>
-
-          <div class="form-group">
-            <label for="owner-phone">Telefon</label>
-            <input type="tel" id="owner-phone" name="ownerPhone" class="form-control" ng-model="model.ownerEmail" required/>
-            <form-control-messages input="submitForm.ownerPhone"></form-control-messages>
-          </div>
-
-          <div class="form-group">
-            <label for="street">Straße <small>inkl. Hausnummer</small></label>
-            <input type="text" id="street" name="street" pattern=".* [0-9]+[a-z]?" class="form-control" ng-model="model.street" required />
-            <form-control-messages input="submitForm.street">
-              <!--<li ng-message="pattern">Bitte geben Sie einen Straßennamen und eine Hausnummer durch ein Leerzeichen getrennt an.</li>-->
-            </form-control-messages>
-          </div>
-
-          <div class="row">
-            <div class="col-xs-4">
-              <div class="form-group">
-                <label for="zip-code">PLZ</label>
-                <input type="number" id="zip-code" name="zipCode" min="01001" max="99998" class="form-control" ng-model="model.zipCode" required/>
-                <form-control-messages input="submitForm.zipCode">
-                  <!-- TODO: min max -->
-                </form-control-messages>
-              </div>
-            </div>
-
-            <div class="col-xs-8">
-              <div class="form-group">
-                <label for="city">Stadt</label>
-                <input type="text" id="city" name="city" class="form-control" ng-model="model.city" required />
-                <form-control-messages input="submitForm.city"></form-control-messages>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="datetime-start">Startzeitpunkt</label>
-            <input type="datetime-local" id="datetime-start" name="datetimeStart" ng-model="model.datetimeStart" class="form-control" />
-            <form-control-messages input="submitForm.datetimeStart">
-              <!-- TODO: range -->
-            </form-control-messages>
-          </div>
-
-          <div class="form-group">
-            <label for="datetime-end">Endzeitpunkt</label>
-            <input type="datetime-local" id="datetime-end" name="datetimeStart" ng-model="model.datetimeEnd" class="form-control" />
-            <form-control-messages input="submitForm.datetimeEnd">
-              <!-- TODO: range -->
-            </form-control-messages>
-          </div>
-
-          <div class="form-group">
-            <label for="description">Beschreibung <small>(optional)</small></label>
-            <textarea id="description" name="description" class="form-control" ng-model="model.description"></textarea>
-            <form-control-messages input="submitForm.description"></form-control-messages>
-
-            <p class="description">
-              Schreibe etwas darüber, warum du dein Tier für den angegebenen Zeitraum verleihen möchtest.
-            </p>
-          </div>
-        </div>
+        <ng-include src="'layout/submit/column-1.html'"></ng-include>
+        <ng-include src="'layout/submit/column-2.html'"></ng-include>
       </div>
     </form>
   </div>

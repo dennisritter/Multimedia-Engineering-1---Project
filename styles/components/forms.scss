@@ -34,3 +34,16 @@
     }
   }
 }
+
+.form-group {
+  .description {
+    font-size: $font-size-small;
+    color: $gray-light;
+    margin-top: 5px;
+  }
+}
+
+.wrap-submit-form {
+  background: $gray-lighter;
+  padding: ($grid-gutter-width * 2) 0 $grid-gutter-width 0;
+}

@@ -12,21 +12,31 @@
 .topbar {
   background-color: $brand-primary;
   position: relative;
-  z-index: 100;
+  z-index: 200;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
+.primary-navigation-wrap {
+  position: relative;
+}
+
 .primary-navigation {
+  position: absolute;
+  z-index: 100;
+  display: block;
+  width: 100%;
+
   li {
     background-color: $brand-red;
+
     a {
       padding: 12px 0;
       display: block;
       text-align: center;
       color: white;
       font-weight: bold;
-
     }
+
     &:hover {
       background-color: $brand-red-darker;
     }

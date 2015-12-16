@@ -18,24 +18,24 @@
 
 .primary-navigation {
   li {
+    background-color: $brand-red;
     a {
-      background-color: $brand-red;
       padding: 12px 0;
       display: block;
       text-align: center;
       color: white;
       font-weight: bold;
 
-      &:hover {
-        background-color: $brand-red-darker;
-      }
+    }
+    &:hover {
+      background-color: $brand-red-darker;
     }
 
-    &:first-child a {
+    &:first-child {
       border-bottom-left-radius: 15px;
     }
 
-    &:last-child a {
+    &:last-child {
       border-bottom-right-radius: 15px;
     }
   }

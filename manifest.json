@@ -11,7 +11,8 @@
         "angular-messages",
         "angular-route",
         "angular-google-maps",
-        "angular-simple-logger"
+        "angular-simple-logger",
+        "angular-animate"
       ]
     },
     "main.css": {

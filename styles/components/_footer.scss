@@ -1,0 +1,38 @@
+footer {
+  padding: ($grid-gutter-width / 2) 0;
+  background: $brand-red;
+  border-top: 1px solid $brand-red-darker;
+  color: white;
+
+  .copyright {
+    font-family: $brand-logo-font;
+    font-size: $font-size-h4;
+    display: inline-block;
+    padding: 5px 0;
+  }
+}
+
+.footer-navigation {
+  @extend .pull-right;
+  display: block;
+
+  ul {
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: inline-block;
+
+      a {
+        display: inline-block;
+        color: white;
+        padding: 5px 9px;
+        cursor: pointer;
+        
+        &:hover {
+          background: $brand-red-darker;
+        }
+      }
+    }
+  }
+}

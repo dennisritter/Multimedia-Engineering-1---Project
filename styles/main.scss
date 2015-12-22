@@ -6,8 +6,9 @@
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "../bower_components/font-awesome/scss/font-awesome";
 
-@import "global.scss";
-@import "grid.scss";
+@import "typography";
+@import "global";
+@import "grid";
 
 @import "components/header";
 @import "components/slideshow";

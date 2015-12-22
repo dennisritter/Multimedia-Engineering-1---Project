@@ -27,10 +27,10 @@
     color: $brand-red-darker;
     
     &.success {
-      $green-dark: darken( saturate( $brand-green, 10% ), 30% );
+      $green-dark: darken( $brand-success, 15% );
       border-color: $green-dark;
-      color: $green-dark;
-      background: lighten( $brand-green, 20% );
+      color: darken( $brand-success, 30% );
+      background: lighten( $brand-success, 30% );
     }
   }
 }

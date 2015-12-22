@@ -8,13 +8,11 @@ angular.module('petsitting').controller('SlideShowController', ['$scope', '$inte
     {path:"/img/slideshow-dog2.jpg"}
   ];
 
-  $scope.image = $scope.images[0];
-
-  var counter = 0;
+  $scope.counter = 0;
   $interval(function(){
-    $scope.image = $scope.images[counter % ( $scope.images.length - 1 )];
-    counter++;
-  }, 1000);
+    $scope.counter++;
+    $scope.counter = $scope.counter % $scope.images.length;
+  }, 5000);
 
 }]);
 

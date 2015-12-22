@@ -1,0 +1,24 @@
+@mixin opener-variant ( $border-color, $bg-color: lighten( $border-color, 50% ), $text-color: darken( $border-color, 20% ) ) {
+  background: $bg-color;
+  border-color: $border-color;
+  color: $text-color;
+}
+
+.opener {
+  border: 5px solid $gray-lighter;
+  border-radius: 20px;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+
+  &.green {
+    @include opener-variant( $brand-green );
+  }
+
+  &.orange {
+    @include opener-variant( $brand-orange, lighten( $brand-orange, 30% ), darken( $brand-orange, 30% ) );
+  }
+}
+
+.wrapper-front-page-content {
+  margin: $grid-gutter-width 0;
+}

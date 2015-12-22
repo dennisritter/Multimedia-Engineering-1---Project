@@ -1,0 +1,16 @@
+.btn {
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.btn-green {
+  @include button-variant( white, $brand-green, darken( $brand-green, 10% ) );
+}
+
+.btn-orange {
+  @include button-variant( white, $brand-orange, darken( $brand-orange, 20% ) );
+}
+
+.btn-red {
+  @include button-variant( white, $brand-red, $brand-red-darker );
+}

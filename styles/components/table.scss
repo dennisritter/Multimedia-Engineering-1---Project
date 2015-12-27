@@ -4,4 +4,22 @@ table {
   thead {
     font-weight: bold;
   }
+
+  address {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin: 10px 0 0 0;
+  }
+
+  .pet-desc {
+    border: 5px solid $brand-green;
+    border-radius: 15px;
+    padding: 10px 15px;
+    margin:  0 0 10px 0;
+  }
+
+}
+
+.google-map-container {
+  height: 300px;
 }

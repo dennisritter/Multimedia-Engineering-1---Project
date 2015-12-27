@@ -12,7 +12,8 @@
         "angular-route",
         "angular-google-maps",
         "angular-simple-logger",
-        "angular-animate"
+        "angular-animate",
+        "lodash"
       ]
     },
     "main.css": {

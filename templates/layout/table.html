@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <table class="table table-striped" class="rounded">
+    <table class="table table-striped" class="rounded" ng-controller="GoogleMapsController">
       <thead>
       <tr>
         <th>Vorname</th>
@@ -31,11 +31,13 @@
       </tr>
       <tr class="hide-additional-info">
         <td colspan="4">
-          <div class="maps" id="map-001"></div>
+          <div class="google-map-container">
+            <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+          </div>
         </td>
         <td colspan="5">
-          <div class="column third">
-            <img src="img/husky.jpg" class="pet-photo" colspan="5"/>
+          <div class="col-lg-4" colspan="2">
+            <img src="img/husky.jpg" class="img-rounded"/>
             <address>
               <ul>
                 <li>Dennis Ritter</li>
@@ -44,17 +46,16 @@
               </ul>
             </address>
           </div>
-          <div class="column two-thirds">
-            <div class="pet-description">
+          <div class="col-lg-8 pull-right" colspan="3">
+            <div class="pet-desc">
               <p>Der Lucky ist ein ganz Toller. lorem ipsum set etiam est. blabla und noch mehr, weil ich mehr Text
                 brauche schreibe ich noch etwas für das schöne Tier. Den Rest mit dem Beißen und so findet ihr am Besten
                 selbst heraus </p>
             </div>
-            <button type="button" class="button button-green button-block button-large rounded contact-button"
-                    id="contact-button-001">
+            <button type="button" class="btn btn-green btn-block">
               Kontakt aufnehmen
             </button>
-            <address class="hide-contact-info">
+            <address>
               <ul>
                 <li>015735309599</li>
                 <li>dennis.r.ritter@gmail.com</li>

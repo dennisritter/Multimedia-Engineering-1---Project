@@ -33,6 +33,7 @@ angular.module('petsitting').controller( 'SubmitController', [ '$scope', 'Storag
       return;
     }
 
+    $scope.messages.loadingOn();
     StorageService.persist( $scope.model )
       .then( function () {
         $scope.messages.saved = true;
@@ -42,7 +43,8 @@ angular.module('petsitting').controller( 'SubmitController', [ '$scope', 'Storag
         } else {
           data.messages.unknownError = true;
         }
-      } );
+      } )
+      .finally( $scope.messages.loadingOff );
   };
 
 } ] );

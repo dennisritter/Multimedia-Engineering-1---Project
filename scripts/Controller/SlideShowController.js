@@ -1,4 +1,4 @@
-angular.module('petsitting').controller('SlideShowController', ['$scope', '$interval', function($scope, $interval){
+angular.module('petsitting').controller('SlideShowController', ['$scope', '$interval', function ($scope, $interval) {
 
   $scope.images = [
     {path:"/img/slideshow-dog.jpg"},
@@ -15,4 +15,3 @@ angular.module('petsitting').controller('SlideShowController', ['$scope', '$inte
   }, 5000);
 
 }]);
-

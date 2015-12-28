@@ -164,4 +164,6 @@ gulp.task( 'watch', [], function () {
   watch( [ 'bower.json', 'assets/manifest.json' ], function () {
     gulp.start( 'build' );
   } );
+
+  gulp.start( 'build' );
 } );

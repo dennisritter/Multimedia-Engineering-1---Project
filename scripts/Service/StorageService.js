@@ -53,7 +53,7 @@ angular.module('petsitting').service( 'StorageService', [ '$http', '$q', '$timeo
 
     $timeout( function () {
       defer.resolve( data );
-    }, 500 );
+    }, 4000 );
 
     return defer.promise;
   };

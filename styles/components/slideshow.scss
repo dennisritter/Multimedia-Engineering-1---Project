@@ -19,9 +19,10 @@
     border-bottom-right-radius: 15px;
   }
 
-  .fade{
+  .fade {
     opacity: 1;
   }
+
   /* The starting CSS styles for the enter animation */
   .fade.ng-enter {
     transition:1s linear all;
@@ -41,7 +42,7 @@
 
   /* The finishing CSS styles for the leave animation */
   .fade.ng-enter.ng-leave-active {
-    opacity:0;
+    opacity: 0;
   }
 
   @media ( max-width: $screen-xs-max ) {

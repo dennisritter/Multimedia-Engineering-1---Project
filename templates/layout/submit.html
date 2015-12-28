@@ -8,6 +8,7 @@
             <li ng-message="dataInvalid">Die eingegebenen Daten sind ungültig.</li>
             <li ng-message="unknownError">Beim Speichern Ihrer Daten ist ein unbekannter Fehler aufgetreten. Bitte versuchen Sie es später erneut.</li>
           </ul>
+          <loading-animation ng-if="messages.loading"></loading-animation>
         </div>
       </div>
 

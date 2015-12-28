@@ -1,0 +1,21 @@
+.loading-animation {
+  display: block;
+  width: 100%;
+
+  .paw-image {
+    display: block;
+    max-width: 50px;
+    width: 100%;
+    height: auto;
+    margin: 15px auto;
+
+    path {
+      fill: $brand-red;
+      transition: fill 200ms;
+
+      &.light {
+        fill: lighten( $brand-red, 30% );
+      }
+    }
+  }
+}

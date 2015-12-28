@@ -1,3 +1,7 @@
+body, html {
+  min-height: 100vh;
+}
+
 a {
   &:hover, &:active, &:visited, &:focus {
     text-decoration: none ;

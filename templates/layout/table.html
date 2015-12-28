@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <table class="table table-striped" class="rounded" ng-controller="GoogleMapsController">
+    <table class="table table-striped" ng-controller="TableController">
       <thead>
       <tr>
         <th>Vorname</th>
@@ -14,56 +14,54 @@
         <th><!-- operations --></th>
       </tr>
       </thead>
-      <tbody>
-      <tr class="short-info">
-        <td>Dennis</td>
-        <td>Ritter</td>
-        <td>Berlin</td>
-        <td>29/10/15 - 5/11/15</td>
-        <td>Hund</td>
-        <td>Husky</td>
-        <td>Lucky</td>
-        <td>7</td>
-        <td>
-          <a href="submit.html"><i class="fa fa-edit"></i></a>
-          <a><i class="fa fa-trash"></i></a>
-        </td>
-      </tr>
-      <tr class="hide-additional-info">
-        <td colspan="4">
-          <div class="google-map-container">
-            <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
-          </div>
-        </td>
-        <td colspan="5">
-          <div class="col-lg-4" colspan="2">
-            <img src="img/husky.jpg" class="img-rounded"/>
-            <address>
-              <ul>
-                <li>Dennis Ritter</li>
-                <li>Richardplatz 16</li>
-                <li>12059 Berlin</li>
-              </ul>
-            </address>
-          </div>
-          <div class="col-lg-8 pull-right" colspan="3">
-            <div class="pet-desc">
-              <p>Der Lucky ist ein ganz Toller. lorem ipsum set etiam est. blabla und noch mehr, weil ich mehr Text
-                brauche schreibe ich noch etwas für das schöne Tier. Den Rest mit dem Beißen und so findet ihr am Besten
-                selbst heraus </p>
+      <tbody ng-repeat="user in users">
+        <tr>
+          <td>{{user.firstName}}</td>
+          <td>{{user.lastName}}</td>
+          <td>{{user.city}}</td>
+          <td>{{user.dateStart | date : 'short'}} - {{user.dateEnd | date : 'short'}}</td>
+          <td>{{user.animalType}}</td>
+          <td>{{user.animalBreed}}</td>
+          <td>{{user.animalName}}</td>
+          <td>{{user.animalAge}}</td>
+          <td>
+            <a href="submit.html"><i class="fa fa-edit"></i></a>
+            <a><i class="fa fa-trash"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4">
+            <div>
+              <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
             </div>
-            <button type="button" class="btn btn-green btn-block">
-              Kontakt aufnehmen
-            </button>
-            <address>
-              <ul>
-                <li>015735309599</li>
-                <li>dennis.r.ritter@gmail.com</li>
-              </ul>
-            </address>
-          </div>
-        </td>
-      </tr>
+          </td>
+          <td colspan="5">
+            <div class="col-lg-4" colspan="2">
+              <img src="img/husky.jpg" class="img-rounded"/>
+              <address>
+                <ul>
+                  <li>{{user.firstName}} {{user.lastName}}</li>
+                  <li>{{user.street}}</li>
+                  <li>{{user.zipCode}} {{user.city}}</li>
+                </ul>
+              </address>
+            </div>
+            <div class="col-lg-8 pull-right" colspan="3">
+              <div class="pet-desc">
+                <p>{{user.description}}</p>
+              </div>
+              <button type="button" class="btn btn-green btn-block">
+                Kontakt aufnehmen
+              </button>
+              <address>
+                <ul>
+                  <li>{{user.phone}}</li>
+                  <li>{{user.email}}</li>
+                </ul>
+              </address>
+            </div>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>

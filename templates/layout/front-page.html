@@ -1,9 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-12 no-padding" id="animal-slideshow" ng-controller="SlideShowController">
-      <figure ng-if="$index == counter" ng-repeat="image in images" class="fade">
-        <img ng-src="{{image.path}}"/>
-      </figure>
+    <div class="col-xs-12" id="animal-slideshow" ng-controller="SlideShowController">
+      <div>
+        <figure ng-if="$index == counter" ng-repeat="image in images" class="fade">
+          <img ng-src="{{image.path}}" class="img-responsive" />
+        </figure>
+      </div>
     </div>
   </div>
 </div>

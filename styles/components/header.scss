@@ -56,4 +56,8 @@
       border-bottom-right-radius: 15px;
     }
   }
+
+  @media ( max-width: $screen-xs-max ) {
+    position: static;
+  }
 }

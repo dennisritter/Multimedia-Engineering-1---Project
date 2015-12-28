@@ -4,7 +4,7 @@
 
   figure {
     position: absolute;
-    top: 0px;
+    top: 0;
     width: 100%;
 
     &:first-child {
@@ -42,5 +42,9 @@
   /* The finishing CSS styles for the leave animation */
   .fade.ng-enter.ng-leave-active {
     opacity:0;
+  }
+
+  @media ( max-width: $screen-xs-max ) {
+    padding: 0;
   }
 }

@@ -1,44 +1,44 @@
 <div class="container">
-  <div class="row">
-    <div class="table-responsive">
-      <table class="table table-striped" ng-controller="TableController">
-        <thead>
-        <tr>
-          <th>Vorname</th>
-          <th>Name</th>
-          <th>Stadt</th>
-          <th>Zeitraum</th>
-          <th>Tier</th>
-          <th>Rasse</th>
-          <th>Tiername</th>
-          <th>Tieralter</th>
-          <th><!-- operations --></th>
+  <div class="table-responsive">
+    <table class="table table-striped" ng-controller="TableController">
+      <thead>
+      <tr>
+        <th>Vorname</th>
+        <th>Name</th>
+        <th>Stadt</th>
+        <th>Zeitraum</th>
+        <th>Tier</th>
+        <th>Rasse</th>
+        <th>Tiername</th>
+        <th>Tieralter</th>
+        <th><!-- operations --></th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="user in users">
+          <td>{{user.firstName}}</td>
+          <td>{{user.lastName}}</td>
+          <td>{{user.city}}</td>
+          <td>{{user.dateStart | date : 'short'}} - {{user.dateEnd | date : 'short'}}</td>
+          <td>{{user.animalType}}</td>
+          <td>{{user.animalBreed}}</td>
+          <td>{{user.animalName}}</td>
+          <td>{{user.animalAge}}</td>
+          <td>
+            <a href="/submit"><i class="fa fa-edit"></i></a>
+            <a><i class="fa fa-trash"></i></a>
+          </td>
         </tr>
-        </thead>
-        <tbody ng-repeat="user in users">
-          <tr>
-            <td>{{user.firstName}}</td>
-            <td>{{user.lastName}}</td>
-            <td>{{user.city}}</td>
-            <td>{{user.dateStart | date : 'short'}} - {{user.dateEnd | date : 'short'}}</td>
-            <td>{{user.animalType}}</td>
-            <td>{{user.animalBreed}}</td>
-            <td>{{user.animalName}}</td>
-            <td>{{user.animalAge}}</td>
-            <td>
-              <a href="submit.html"><i class="fa fa-edit"></i></a>
-              <a><i class="fa fa-trash"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="4">
-              <div>
-                <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
-              </div>
-            </td>
-            <td colspan="5">
-              <div class="col-lg-4" colspan="2">
-                <img src="img/husky.jpg" class="img-rounded"/>
+        <tr>
+          <td colspan="4">
+            <div>
+              <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+            </div>
+          </td>
+          <td colspan="5">
+            <div class="row">
+              <div class="col-lg-4">
+                <img src="/img/husky.jpg" class="img-rounded"/>
                 <address>
                   <ul>
                     <li>{{user.firstName}} {{user.lastName}}</li>
@@ -47,7 +47,7 @@
                   </ul>
                 </address>
               </div>
-              <div class="col-lg-8 pull-right" colspan="3">
+              <div class="col-lg-8">
                 <div class="pet-desc">
                   <p>{{user.description}}</p>
                 </div>
@@ -61,10 +61,10 @@
                   </ul>
                 </address>
               </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

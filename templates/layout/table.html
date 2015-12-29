@@ -2,20 +2,20 @@
   <div class="table-responsive">
     <table class="table table-striped" ng-controller="TableController">
       <thead>
-      <tr>
-        <th>Vorname</th>
-        <th>Name</th>
-        <th>Stadt</th>
-        <th>Zeitraum</th>
-        <th>Tier</th>
-        <th>Rasse</th>
-        <th>Tiername</th>
-        <th>Tieralter</th>
-        <th><!-- operations --></th>
-      </tr>
+        <tr>
+          <th>Vorname</th>
+          <th>Name</th>
+          <th>Stadt</th>
+          <th>Zeitraum</th>
+          <th>Tier</th>
+          <th>Rasse</th>
+          <th>Tiername</th>
+          <th>Tieralter</th>
+          <th><!-- operations --></th>
+        </tr>
       </thead>
-      <tbody>
-        <tr ng-repeat="user in users">
+      <tbody ng-repeat="user in users">
+        <tr ng-click="toggleDetails($index) ; getGoogleMap($index)">
           <td>{{user.firstName}}</td>
           <td>{{user.lastName}}</td>
           <td>{{user.city}}</td>
@@ -29,7 +29,7 @@
             <a><i class="fa fa-trash"></i></a>
           </td>
         </tr>
-        <tr>
+        <tr ng-show="activeRow == $index">
           <td colspan="4">
             <div>
               <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>

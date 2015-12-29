@@ -14,8 +14,8 @@
           <th><!-- operations --></th>
         </tr>
       </thead>
-      <tbody ng-repeat="user in users">
-        <tr ng-click="toggleDetails($index) ; getGoogleMap($index)">
+      <tbody>
+        <tr ng-repeat-start="user in users" ng-click="toggleDetails($index)">
           <td>{{user.firstName}}</td>
           <td>{{user.lastName}}</td>
           <td>{{user.city}}</td>
@@ -29,10 +29,10 @@
             <a><i class="fa fa-trash"></i></a>
           </td>
         </tr>
-        <tr ng-show="activeRow == $index">
+        <tr ng-if="activeRow == $index" ng-repeat-end>
           <td colspan="4">
             <div>
-              <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+              <ui-gmap-google-map center="user.position" zoom="map.zoom"></ui-gmap-google-map>
             </div>
           </td>
           <td colspan="5">
@@ -51,9 +51,7 @@
                 <div class="pet-desc">
                   <p>{{user.description}}</p>
                 </div>
-                <button type="button" class="btn btn-green btn-block">
-                  Kontakt aufnehmen
-                </button>
+                <button type="button" class="btn btn-green btn-block">Kontakt aufnehmen</button>
                 <address>
                   <ul>
                     <li>{{user.phone}}</li>

@@ -1,17 +1,21 @@
-angular.module('petsitting').controller('TableController', ['$scope', 'StorageService', 'uiGmapIsReady', function ($scope, StorageService, uiGmapIsReady) {
+angular.module('petsitting').controller('TableController', ['$scope', 'StorageService', 'uiGmapIsReady', function ($scope, StorageService) {
 
-  // Saves existing user data in data model
-  StorageService.getAll().then(function (data) {
+  $scope.users = [];
+
+  // Loads data into scope
+  StorageService.getAll().then( function (data) {
+    for ( var i = 0; i < data.length; i++ ) {
+      data[i].position = {
+        latitude: data[i].latitude,
+        longitude: data[i].longitude
+      };
+    }
     $scope.users = data;
   });
 
-  //uiGmapIsReady.promise(10).then(function(instances){
-  //  instances.forEach(function(instance){
-  //    var map = instance.map;
-  //    var uuid = map.uiGmap_id;
-  //    var mapInstanceNumber = instance.instance; // Starts at 1.
-  //  });
-  //});
+  $scope.map = {
+    zoom: 13
+  };
 
   // Loads Google Map centered at the users address
   $scope.getGoogleMap = function($index){
@@ -22,7 +26,7 @@ angular.module('petsitting').controller('TableController', ['$scope', 'StorageSe
       },
       zoom: 8
     };
-  }
+  };
 
   // Toggles details-row for a table entry
   $scope.toggleDetails = function($index){

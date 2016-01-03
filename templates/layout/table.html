@@ -51,8 +51,8 @@
                 <div class="pet-desc">
                   <p>{{user.description}}</p>
                 </div>
-                <button type="button" class="btn btn-green btn-block">Kontakt aufnehmen</button>
-                <address>
+                <button ng-click="isVisible = !isVisible" type="button" class="btn btn-green btn-block">Kontakt aufnehmen</button>
+                <address ng-if="isVisible" class="fade">
                   <ul>
                     <li>{{user.phone}}</li>
                     <li>{{user.email}}</li>

@@ -1,4 +1,4 @@
-angular.module('petsitting').controller('TableController', ['$scope', 'StorageService', 'uiGmapIsReady', function ($scope, StorageService) {
+angular.module('petsitting').controller('TableController', ['$scope', 'StorageService', function ($scope, StorageService, ngAnimate) {
 
   $scope.users = [];
 
@@ -20,6 +20,8 @@ angular.module('petsitting').controller('TableController', ['$scope', 'StorageSe
   // Toggles details-row for a table entry
   $scope.toggleDetails = function($index){
     $scope.activeRow = $scope.activeRow == $index ? -1 : $index;
+    //Visibility of contact information
+    $scope.isVisible = false;
   }
 
 

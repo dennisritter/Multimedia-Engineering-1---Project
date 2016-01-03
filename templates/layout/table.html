@@ -19,8 +19,8 @@
           <td>{{user.firstName}}</td>
           <td>{{user.lastName}}</td>
           <td>{{user.city}}</td>
-          <td>{{user.dateStart | date : 'short'}} - {{user.dateEnd | date : 'short'}}</td>
-          <td>{{user.animalType}}</td>
+          <td>{{user.dateStart | date : 'dd.MM.yyyy'}} - {{user.dateEnd | date : 'dd.MM.yyyy'}}</td>
+          <td>{{user.animalType | animalType}}</td>
           <td>{{user.animalBreed}}</td>
           <td>{{user.animalName}}</td>
           <td>{{user.animalAge}}</td>

@@ -1,13 +1,8 @@
-angular.module('petsitting').controller( 'SubmitController', [ '$scope', 'StorageService', 'FormMessages', function ( $scope, StorageService, FormMessages ) {
+angular.module('petsitting').controller( 'SubmitController', [ '$scope', 'StorageService', 'FormMessages', 'AnimalTypes', function ( $scope, StorageService, FormMessages, AnimalTypes ) {
 
   $scope.model = StorageService.getEmptyModel();
   $scope.now = new Date();
-  $scope.animalTypes = {
-    dog: 'Hund',
-    cat: 'Katze',
-    mouse: 'Maus',
-    bird: 'Vogel'
-  };
+  $scope.animalTypes = AnimalTypes;
 
   $scope.messages = new FormMessages({
     saved: false,

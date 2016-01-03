@@ -19,12 +19,12 @@
   </div>
   <div class="container">
     <div class="primary-navigation-wrap">
-      <nav class="primary-navigation">
+      <nav class="primary-navigation" ng-controller="PrimaryNavigationController">
         <div class="row">
           <div class="nav-items col-xs-12">
             <ul>
-              <li class="col-xs-12 col-sm-6"><a href="/submit">Ich habe ein Haustier</a></li>
-              <li class="col-xs-12 col-sm-6"><a href="/table">Ich will ein Haustier haben</a></li>
+              <li class="col-xs-12 col-sm-6" ng-class="{ active: route.current.activeTab == 'submit' }"><a href="/submit">Ich habe ein Haustier</a></li>
+              <li class="col-xs-12 col-sm-6" ng-class="{ active: route.current.activeTab == 'table' }"><a href="/table">Ich will ein Haustier haben</a></li>
             </ul>
           </div>
         </div>

@@ -2,13 +2,16 @@ angular.module( 'petsitting' ).config( [ '$routeProvider', '$locationProvider', 
 
   $routeProvider
     .when( '/', {
-      templateUrl: 'layout/front-page.html'
+      templateUrl: 'layout/front-page.html',
+      activeTab: 'home'
     } )
     .when( '/submit', {
-      templateUrl: 'layout/submit.html'
+      templateUrl: 'layout/submit.html',
+      activeTab: 'submit'
     } )
     .when( '/table', {
-      templateUrl: 'layout/table.html'
+      templateUrl: 'layout/table.html',
+      activeTab: 'table'
     } )
     .otherwise( '/' );
 

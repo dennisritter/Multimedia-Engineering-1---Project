@@ -59,5 +59,19 @@
 
   @media ( max-width: $screen-xs-max ) {
     position: static;
+
+    .nav-items {
+      padding: 0;
+    }
+
+    li {
+      &:first-child {
+        border-bottom-left-radius: 0;
+      }
+
+      &:last-child {
+        border-bottom-right-radius: 0;
+      }
+    }
   }
 }

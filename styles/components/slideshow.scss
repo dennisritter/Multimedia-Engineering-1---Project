@@ -13,14 +13,14 @@
   }
 
   img {
-    max-width: 100%;
-    height: auto;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
   }
 
   .fade {
     opacity: 1;
+    display: block;
+    width: 100%;
   }
 
   /* The starting CSS styles for the enter animation */

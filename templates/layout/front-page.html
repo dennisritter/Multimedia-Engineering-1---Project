@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12" id="animal-slideshow" ng-controller="SlideShowController">
-      <div>
+    <div class="col-xs-12" ng-controller="SlideShowController">
+      <div id="animal-slideshow">
         <figure ng-if="$index == counter" ng-repeat="image in images" class="fade">
           <img ng-src="{{image.path}}" class="img-responsive" />
         </figure>

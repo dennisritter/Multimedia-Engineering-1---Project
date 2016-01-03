@@ -18,6 +18,10 @@ table {
     margin:  0 0 10px 0;
   }
 
+  .item-header td {
+    cursor: pointer;
+  }
+
   img {
     @extend .img-responsive;
   }

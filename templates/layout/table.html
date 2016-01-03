@@ -32,7 +32,9 @@
         <tr ng-if="activeRow == $index" ng-repeat-end>
           <td colspan="4">
             <div>
-              <ui-gmap-google-map center="user.position" zoom="map.zoom"></ui-gmap-google-map>
+              <ui-gmap-google-map center="user.position" zoom="map.zoom">
+                <ui-gmap-marker idKey="user.id" coords="user.position"></ui-gmap-marker>
+              </ui-gmap-google-map>
             </div>
           </td>
           <td colspan="5">

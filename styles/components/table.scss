@@ -20,7 +20,12 @@ table {
     border: 5px solid $brand-green;
     border-radius: 15px;
     padding: 10px 15px;
-    margin:  0 0 10px 0;
+    margin: 0 0 10px 0;
+  }
+  @media(max-width: 768px) {
+    .pet-desc {
+      margin-top: 10px !important;
+    }
   }
 
   .item-header td {

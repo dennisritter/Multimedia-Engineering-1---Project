@@ -13,6 +13,7 @@ angular.module('petsitting').controller('TableController', ['$scope', 'StorageSe
     $scope.users = data;
   });
 
+  //map object for google-maps
   $scope.map = {
     zoom: 13
   };

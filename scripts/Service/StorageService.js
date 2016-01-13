@@ -24,7 +24,11 @@ angular.module('petsitting').service( 'StorageService', [ '$http', '$q', '$timeo
   var getAll = function () {
     var defer = $q.defer();
 
-    $http.get( '/test-data.json' )
+    //$http( {
+    //  url: "/api/api.php",
+    //  method: "GET"
+    //} )
+    $http.get( 'test-data.json' )
       .success( function ( response ) {
         defer.resolve( response );
       } )

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Erstellungszeit: 12. Jan 2016 um 13:17
+-- Erstellungszeit: 13. Jan 2016 um 19:20
 -- Server-Version: 5.5.42
 -- PHP-Version: 5.6.10
 
@@ -28,19 +28,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `userdata` (
   `id` int(11) NOT NULL DEFAULT '0',
-  `firstName` varchar(128) DEFAULT NULL,
-  `lastName` varchar(128) DEFAULT NULL,
-  `city` varchar(128) DEFAULT NULL,
+  `firstName` varchar(64) DEFAULT NULL,
+  `lastName` varchar(64) DEFAULT NULL,
+  `city` varchar(64) DEFAULT NULL,
   `zipCode` smallint(6) DEFAULT NULL,
-  `street` varchar(128) DEFAULT NULL,
+  `street` varchar(64) DEFAULT NULL,
   `dateStart` date DEFAULT NULL,
   `dateEnd` date DEFAULT NULL,
-  `animalType` varchar(128) DEFAULT NULL,
-  `animalBreed` varchar(128) DEFAULT NULL,
-  `animalName` varchar(128) DEFAULT NULL,
+  `animalType` varchar(64) DEFAULT NULL,
+  `animalBreed` varchar(64) DEFAULT NULL,
+  `animalName` varchar(64) DEFAULT NULL,
   `animalAge` double DEFAULT NULL,
   `description` varchar(512) DEFAULT NULL,
-  `email` varchar(128) DEFAULT NULL,
+  `email` varchar(64) DEFAULT NULL,
   `phone` int(16) DEFAULT NULL,
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL

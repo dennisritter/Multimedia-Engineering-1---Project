@@ -3,3 +3,5 @@ bower_components
 vendor
 public/dist
 .idea
+api-lib/config
+!api-lib/config/*.dist

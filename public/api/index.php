@@ -1,9 +1,11 @@
 <?php
 
-require_once( __DIR__.'/connection.php' );
-require_once( __DIR__.'/functions.php' );
-require_once( __DIR__.'/validation.php' );
-require_once( __DIR__.'/controllers.php' );
+define( 'LIB_DIR', __DIR__ . '/../../api-lib' );
+
+require_once( LIB_DIR . '/connection.php' );
+require_once( LIB_DIR . '/functions.php' );
+require_once( LIB_DIR . '/validation.php' );
+require_once( LIB_DIR . '/controllers.php' );
 
 parse_str(file_get_contents("php://input"), $data);
 $id = array_key_exists( 'id', $_GET ) && is_numeric( $_GET['id'] )

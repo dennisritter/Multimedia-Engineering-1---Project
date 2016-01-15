@@ -31,7 +31,7 @@ CREATE TABLE `userdata` (
   `firstName` varchar(64) DEFAULT NULL,
   `lastName` varchar(64) DEFAULT NULL,
   `city` varchar(64) DEFAULT NULL,
-  `zipCode` smallint(6) DEFAULT NULL,
+  `zipCode` smallint(5) DEFAULT NULL,
   `street` varchar(64) DEFAULT NULL,
   `dateStart` date DEFAULT NULL,
   `dateEnd` date DEFAULT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE `userdata` (
   `animalAge` double DEFAULT NULL,
   `description` varchar(512) DEFAULT NULL,
   `email` varchar(64) DEFAULT NULL,
-  `phone` int(16) DEFAULT NULL,
+  `phone` varchar(16) DEFAULT NULL,
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

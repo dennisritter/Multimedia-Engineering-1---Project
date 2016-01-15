@@ -14,7 +14,7 @@ $id = array_key_exists( 'id', $_GET ) && is_numeric( $_GET['id'] )
 
 switch ($_SERVER[ 'REQUEST_METHOD' ]) {
     case 'GET':
-        getController( $id, $data );
+        getController( $id );
         break;
     case 'POST':
         postController( $data );

@@ -38,7 +38,6 @@ function validateIntRange( $property, $value, $min, $max ) {
 	return $value;
 }
 
-
 function validateDate ( $value, $property ) {
 	$regex = '/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/';
 	$matches = [];
@@ -52,7 +51,20 @@ function validateDate ( $value, $property ) {
 		sendErrorResponse( $property . 'DateInvalid' );
 	}
 
+	$now = new DateTime('now');
+	if ( $date < $now )
+		sendErrorResponse( $property . 'IsInPast' );
+
 	return $date->format('Y-m-d');
+}
+
+function validateEmail ( $value ) {
+	$value = validateStringLength( 'email', $value, 6, 64 );
+
+	if ( !$value = filter_var( $value, FILTER_VALIDATE_EMAIL ) )
+		sendErrorResponse( 'emailFormatInvalid' );
+
+	return $value;
 }
 
 function validateData( $data, $new = false ) {
@@ -74,6 +86,8 @@ function validateData( $data, $new = false ) {
 	$data['animalName'] = validateStringLength( 'animalName', $data['animalName'], 2, 64 );
 	$data['animalAge'] = validateIntRange( 'animalAge', $data['animalAge'], 0, 100 );
 	$data['description'] = validateStringLength( 'description', $data['description'], 0, 512 );
-	$data['email'] = validateStringLength( 'email', $data['email'], 6, 64 );
+	$data['email'] = validateEmail( $data['email'] );
 	$data['phone'] = validateStringLength( 'phone', $data['phone'], 3, 16 );
+
+	return $data;
 }

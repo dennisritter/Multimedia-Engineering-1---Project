@@ -38,7 +38,7 @@ CREATE TABLE `userdata` (
   `animalType` varchar(64) DEFAULT NULL,
   `animalBreed` varchar(64) DEFAULT NULL,
   `animalName` varchar(64) DEFAULT NULL,
-  `animalAge` double DEFAULT NULL,
+  `animalAge` tinyint(3) DEFAULT NULL,
   `description` varchar(512) DEFAULT NULL,
   `email` varchar(64) DEFAULT NULL,
   `phone` varchar(16) DEFAULT NULL,

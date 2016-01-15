@@ -5,64 +5,45 @@ function validateExistence ( $property, $data ) {
 		sendErrorResponse( $property . 'Missing', 400 );
 }
 
-function validateData( $data, $new = false ) {
-	// TODO: sync with required fields
-	$props = [ 'firstName', 'lastName', 'city', 'zipCode', 'street', 'dateStart', 'dateEnd', 'animalType', 'animalBreed', 'animalName', 'animalAge', 'description', 'email', 'phone' ];
-
-	foreach ( $props as $property )
-		validateExistence( $property, $data );
-
-	$data['firstName'] = validateName( 'firstName', $data['firstName'] );
-	$data['lastName'] = validateName( 'lastName', $data['lastName'] );
-	$data['city'] = validateName( 'city', $data['city'] );
-	$data['street'] = validateStreet( $data['street'] );
-
-	$data['dateStart'] = validateDate( $data['dateStart'], 'dateStart' );
-	$data['dateEnd'] = validateDate( $data['dateEnd'], 'dateEnd' );
-
-	$zipCode        =      $data[ 'zipCode' ];
-	$street         =      $data[ 'street' ];
-	$dateStart      =      $data[ 'dateStart' ];
-	$dateEnd        =      $data[ 'dateEnd' ];
-	$animalType     =      $data[ 'animalType' ];
-	$animalBreed    =      $data[ 'animalBreed' ];
-	$animalName     =      $data[ 'animalName' ];
-	$animalAge      =      $data[ 'animalAge' ];
-	$description    =      $data[ 'description' ];
-	$email          =      $data[ 'email' ];
-	$phone          =      $data[ 'phone' ];
-}
-
-function validateName ( $property, $value ) {
+function validateStringLength ( $property, $value, $min, $max ) {
 	if ( !is_string( $value ) )
 		sendErrorResponse( $property . 'NotAString' );
 
-	if ( strlen( $value ) < 3 )
-		sendErrorResponse( $property . 'TooShort' );
+	if ( strlen( $value ) < $min )
+		sendErrorResponse( $property . 'StringTooShort' );
 
-	if ( strlen( $value ) > 64 )
-		sendErrorResponse( $property . 'TooLong' );
+	if ( strlen( $value ) > $max )
+		sendErrorResponse( $property . 'StringTooLong' );
 
 	return $value;
 }
 
-function validateZipCode( $zipCode ) {
+function validatePattern( $property, $value, $regex ){
+	if ( preg_match( $regex, $value ) !== 1 )
+		sendErrorResponse( $property . 'StringFormatInvalid' );
 
+	return $value;
 }
 
-function validateStreet( $street ){
-	$regex = '/^.* [0-9]+[a-z]?/';
-	if ( preg_match( $regex, $street ) !== 1 )
-		sendErrorResponse( 'streetFormatInvalid' );
+function validateIntRange( $property, $value, $min, $max ) {
+	if ( !is_int( $value ) )
+		sendErrorResponse( $property . 'NotAnInt' );
 
-	return $street;
+	if ( $value < $min )
+		sendErrorResponse( $property . 'IntTooSmall' );
+
+	if ( $value > $max )
+		sendErrorResponse( $property . 'IntTooBig' );
+
+	return $value;
 }
+
 
 function validateDate ( $value, $property ) {
 	$regex = '/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/';
 	$matches = [];
 	if ( preg_match( $regex, $value, $matches ) !== 1 )
-		sendErrorResponse( $property . 'InvalidFormat' );
+		sendErrorResponse( $property . 'DateFormatInvalid' );
 
 	$date = new DateTime( $value );
 	if ( (int) $date->format('Y') !== (int) $matches[1]
@@ -74,30 +55,25 @@ function validateDate ( $value, $property ) {
 	return $date->format('Y-m-d');
 }
 
-function validateAnimalType( $animalType ){
+function validateData( $data, $new = false ) {
+	$reqProps = [ 'firstName', 'lastName', 'city', 'zipCode', 'street', 'dateStart', 'dateEnd', 'animalType', 'animalName', 'email', 'phone' ];
 
-}
+	foreach ( $reqProps as $property )
+		validateExistence( $property, $data );
 
-function validateAnimalBreed( $animalBreed ){
-
-}
-
-function validateAnimalName( $animalName ){
-
-}
-
-function validateAnimalAge( $animalAge ){
-
-}
-
-function validateDescription( $description ){
-
-}
-
-function validateEmail( $email ){
-
-}
-
-function validatePhone( $phone ){
-
+	$data['firstName'] = validateStringLength( 'firstName', $data['firstName'], 2, 64 );
+	$data['lastName'] = validateStringLength( 'lastName', $data['lastName'], 2, 64 );
+	$data['city'] = validateStringLength( 'city', $data['city'], 2, 64 );
+	$data['zipCode'] = validateIntRange( 'zipcode', $data['zipCode'], 1001, 9998 );
+	$data['street'] = validateStringLength( 'street', $data['street'], 5, 64 );
+	$data['street'] = validatePattern( 'street', $data['street'], '/^.* [0-9]+[a-z]?/' );
+	$data['dateStart'] = validateDate( $data['dateStart'], 'dateStart' );
+	$data['dateEnd'] = validateDate( $data['dateEnd'], 'dateEnd' );
+	$data['animalType'] = validateStringLength( 'animalType', $data['animalType'], 2, 64 );
+	$data['animalBreed'] = validateStringLength( 'animalBreed', $data['animalBreed'], 2, 64 );
+	$data['animalName'] = validateStringLength( 'animalName', $data['animalName'], 2, 64 );
+	$data['animalAge'] = validateIntRange( 'animalAge', $data['animalAge'], 0, 100 );
+	$data['description'] = validateStringLength( 'description', $data['description'], 0, 512 );
+	$data['email'] = validateStringLength( 'email', $data['email'], 6, 64 );
+	$data['phone'] = validateStringLength( 'phone', $data['phone'], 3, 16 );
 }

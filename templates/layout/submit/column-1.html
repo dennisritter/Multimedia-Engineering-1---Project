@@ -4,33 +4,43 @@
   <!-- TODO: Add maxlength to form validation -->
   <div class="form-group" error-classes="submitForm.ownerFirstName">
     <label for="owner-first-name">Vorname</label>
-    <input type="text" id="owner-first-name" name="ownerFirstName" class="form-control" ng-model="model.ownerFirstName" required />
-    <form-control-messages input="submitForm.ownerFirstName"></form-control-messages>
+    <input type="text" maxlength="64" id="owner-first-name" name="ownerFirstName" class="form-control" ng-model="model.ownerFirstName" required />
+    <form-control-messages input="submitForm.ownerFirstName">
+      <li ng-message="maxlength">Der eingegebene Text darf nicht länger als 64 Zeichen sein.</li>
+    </form-control-messages>
+
   </div>
 
   <div class="form-group" error-classes="submitForm.ownerLastName">
     <label for="owner-last-name">Nachname</label>
-    <input type="text" id="owner-last-name" name="ownerLastName" class="form-control" ng-model="model.ownerLastName" required/>
-    <form-control-messages input="submitForm.ownerLastName"></form-control-messages>
+    <input type="text" maxlength="64" id="owner-last-name" name="ownerLastName" class="form-control" ng-model="model.ownerLastName" required/>
+    <form-control-messages input="submitForm.ownerLastName">
+      <li ng-message="maxlength">Der eingegebene Text darf nicht länger als 64 Zeichen sein.</li>
+    </form-control-messages>
   </div>
 
   <div class="form-group" error-classes="submitForm.ownerEmail">
     <label for="owner-email">E-Mail-Adresse</label>
-    <input type="email" id="owner-email" name="ownerEmail" class="form-control" ng-model="model.ownerEmail" required/>
-    <form-control-messages input="submitForm.ownerEmail"></form-control-messages>
+    <input type="email" maxlength="64" id="owner-email" name="ownerEmail" class="form-control" ng-model="model.ownerEmail" required/>
+    <form-control-messages input="submitForm.ownerEmail">
+      <li ng-message="maxlength">Der eingegebene Text darf nicht länger als 64 Zeichen sein.</li>
+    </form-control-messages>
   </div>
 
   <div class="form-group" error-classes="submitForm.ownerPhone">
     <label for="owner-phone">Telefon</label>
-    <input type="tel" id="owner-phone" name="ownerPhone" class="form-control" ng-model="model.ownerPhone" required/>
-    <form-control-messages input="submitForm.ownerPhone"></form-control-messages>
+    <input type="tel" maxlength="16" id="owner-phone" name="ownerPhone" class="form-control" ng-model="model.ownerPhone" required/>
+    <form-control-messages input="submitForm.ownerPhone">
+      <li ng-message="maxlength">Die Telefonnummer darf höchstens 16 Ziffern beinhalten.</li>
+    </form-control-messages>
   </div>
 
   <div class="form-group" error-classes="submitForm.street">
     <label for="street">Straße <small>inkl. Hausnummer</small></label>
-    <input type="text" id="street" name="street" pattern=".* [0-9]+[a-z]?" class="form-control" ng-model="model.street" required />
+    <input type="text"  maxlength="64"  id="street" name="street" pattern=".* [0-9]+[a-z]?" class="form-control" ng-model="model.street" required />
     <form-control-messages input="submitForm.street">
       <li ng-message="pattern">Bitte geben Sie einen Straßennamen und eine Hausnummer durch ein Leerzeichen getrennt an.</li>
+      <li ng-message="maxlength">Der eingegebene Text darf nicht länger als 64 Zeichen sein.</li>
     </form-control-messages>
   </div>
 
@@ -49,8 +59,10 @@
     <div class="col-xs-8">
       <div class="form-group" error-classes="submitForm.city">
         <label for="city">Stadt</label>
-        <input type="text" id="city" name="city" class="form-control" ng-model="model.city" required />
-        <form-control-messages input="submitForm.city"></form-control-messages>
+        <input type="text" maxlength="64" id="city" name="city" class="form-control" ng-model="model.city" required />
+        <form-control-messages input="submitForm.city">
+          <li ng-message="maxlength">Der eingegebene Text darf nicht länger als 64 Zeichen sein.</li>
+        </form-control-messages>
       </div>
     </div>
   </div>

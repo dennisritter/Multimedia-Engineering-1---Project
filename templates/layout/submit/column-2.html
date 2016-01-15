@@ -4,21 +4,25 @@
   <!-- TODO: Add maxlength to form validation -->
   <div class="form-group" error-classes="submitForm.animalName">
     <label for="animal-name">Tiername</label>
-    <input type="text" id="animal-name" name="animalName" class="form-control" ng-model="model.animalName" required/>
-    <form-control-messages input="submitForm.animalName"></form-control-messages>
+    <input type="text" maxlength="64" id="animal-name" name="animalName" class="form-control" ng-model="model.animalName" required/>
+    <form-control-messages input="submitForm.animalName">
+      <li ng-message="maxlength">Der eingegebene Text darf nicht länger als 64 Zeichen sein.</li>
+    </form-control-messages>
   </div>
 
   <div class="form-group" error-classes="submitForm.animalType">
     <label for="animal-type">Tier-Art</label>
-    <select id="animal-type" name="animalType" ng-model="model.animalType" class="form-control" required>
+    <select id="animal-type" maxlength="64" name="animalType" ng-model="model.animalType" class="form-control" required>
       <option ng-repeat="(key, caption) in animalTypes" value="{{key}}">{{caption}}</option>
     </select>
-    <form-control-messages input="submitForm.animalType"></form-control-messages>
+    <form-control-messages input="submitForm.animalType">
+      <li ng-message="maxlength">Der eingegebene Text darf nicht länger als 64 Zeichen sein.</li>
+    </form-control-messages>
   </div>
 
   <div class="form-group" error-classes="submitForm.animalBreed">
     <label for="animal-breed">Tier-Rasse <small>(optional)</small></label>
-    <input type="text" id="animal-breed" name="animalBreed" ng-model="model.animalBreed" class="form-control" />
+    <input type="text" maxlength="64" id="animal-breed" name="animalBreed" ng-model="model.animalBreed" class="form-control" />
     <form-control-messages input="submitForm.animalBreed"></form-control-messages>
   </div>
 
@@ -30,8 +34,10 @@
 
   <div class="form-group" error-classes="submitForm.description">
     <label for="description">Beschreibung <small>(optional)</small></label>
-    <textarea id="description" name="description" class="form-control" ng-model="model.description"></textarea>
-    <form-control-messages input="submitForm.description"></form-control-messages>
+    <textarea id="description" maxlength="512" name="description" class="form-control" ng-model="model.description"></textarea>
+    <form-control-messages input="submitForm.description">
+      <li ng-message="maxlength">Der eingegebene Text darf nicht länger als 512 Zeichen sein.</li>
+    </form-control-messages>
 
     <p class="description">
       Schreibe etwas darüber, warum du dein Tier für den angegebenen Zeitraum verleihen möchtest.

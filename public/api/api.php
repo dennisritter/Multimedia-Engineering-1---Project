@@ -1,34 +1,27 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: dennisritter
- * Date: 13.01.16
- * Time: 15:16
- */
 
-require_once('connection.php');
+require_once( __DIR__.'/connection.php' );
+require_once( __DIR__.'/functions.php' );
+require_once( __DIR__.'/validation.php' );
+require_once( __DIR__.'/controllers.php' );
+
 parse_str(file_get_contents("php://input"), $data);
+$id = array_key_exists( 'id', $_GET ) && is_numeric( $_GET['id'] )
+	? (int) $_GET['id']
+	: -1;
 
 switch ($_SERVER[ 'REQUEST_METHOD' ]) {
     case 'GET':
-        if( array_key_exists("id", $_GET) ) {
-            getRessource($_GET);
-        }else{
-            getCollection();
-        }
+        getController( $id, $data );
         break;
     case 'POST':
-        validateData($data, true);
+        postController( $data );
         break;
     case 'PUT':
-        validateData($data, false);
+        putController( $id, $data );
         break;
     case 'DELETE':
-        if( array_key_exists("id", $_GET) ) {
-            deleteResource($_GET);
-        }else{
-            sendErrorResponse("missingID", 400);
-        }
+        deleteController( $id, $data );
         break;
     default:
         sendErrorResponse("methodNotAllowed", 405);
@@ -58,104 +51,4 @@ function updateResource( $id ){
 
 function deleteResource( $id ){
     //TODO: lösche [ID] aus [Datenbank.Tabelle]
-}
-
-function sendSuccessResponse( $data, $httpStatus = 200 ){
-    status_header( $httpStatus );
-    echo json_encode( $data );
-    die();
-}
-
-function sendErrorResponse( $errorCode, $httpStatus ){
-    $data = [ $success = false, $error = $errorCode ];
-    status_header( $httpStatus );
-    echo json_encode( $data );
-    die();
-}
-
-function validateData( $data, $new = false ){
-    $firstName      =      $data[ 'firstName' ];
-    $lastName       =      $data[ 'lastName' ];
-    $city           =      $data[ 'city' ];
-    $zipCode        =      $data[ 'zipCode' ];
-    $street         =      $data[ 'street' ];
-    $dateStart      =      $data[ 'dateStart' ];
-    $dateEnd        =      $data[ 'dateEnd' ];
-    $animalType     =      $data[ 'animalType' ];
-    $animalBreed    =      $data[ 'animalBreed' ];
-    $animalName     =      $data[ 'animalName' ];
-    $animalAge      =      $data[ 'animalAge' ];
-    $description    =      $data[ 'description' ];
-    $email          =      $data[ 'email' ];
-    $phone          =      $data[ 'phone' ];
-//    $latitude       =      $data[ 'latitude' ];
-//    $longitude      =      $data[ 'longitude' ];
-
-    validateFirstName( $firstName );
-    validateLastName( $lastName );
-    validateCity( $city );
-    validateZipCode( $zipCode );
-    validateStreet( $street );
-    validateDates( $dateStart, $dateEnd );
-    validateAnimalType( $animalType );
-    validateAnimalBreed( $animalBreed );
-    validateAnimalName( $animalName );
-    validateAnimalAge( $animalAge );
-    validateDescription( $description );
-    validateEmail( $email );
-    validatePhone( $phone );
-
-
-}
-
-function validateFirstName( $firstName ){
-
-}
-
-function validateLastName( $lastName ){
-
-}
-
-function validateCity( $city ){
-
-}
-
-function validateZipCode( $zipCode ){
-
-}
-
-function validateStreet( $street ){
-
-}
-
-function validateDates( $dateStart, $dateEnd ){
-
-}
-
-function validateAnimalType( $animalType ){
-
-}
-
-function validateAnimalBreed( $animalBreed ){
-
-}
-
-function validateAnimalName( $animalName ){
-
-}
-
-function validateAnimalAge( $animalAge ){
-
-}
-
-function validateDescription( $description ){
-
-}
-
-function validateEmail( $email ){
-
-}
-
-function validatePhone( $phone ){
-
 }

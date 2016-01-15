@@ -35,11 +35,27 @@ angular.module('petsitting').controller( 'SubmitController', [ '$scope', 'Storag
       }, function ( data ) {
         if ( data.error ) {
           $scope.messages[ data.error ] = true;
+          //TODO: (?) kommt hier ein Methodenaufruf zur identifikation des Fehlers?
+          //var errorMessage = identifyError( data.error );
         } else {
           data.messages.unknownError = true;
         }
       } )
       .finally( $scope.messages.loadingOff );
   };
+
+  //function identifyError( error ){
+  //  switch ( error ) {
+  //    case "error1":
+  //      return "Message for error 1"
+  //      break;
+  //    case "error2":
+  //      return "Message for error 2"
+  //      break;
+  //    default:
+  //      return "Default Message"
+  //      break;
+  //  }
+  //}
 
 } ] );

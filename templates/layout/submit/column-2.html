@@ -28,8 +28,11 @@
 
   <div class="form-group" error-classes="submitForm.animalAge">
     <label for="animal-age">Alter des Tieres <small>(optional)</small></label>
-    <input type="number" min="1" max="100" step="1" id="animal-age" ng-model="model.animalAge" name="animalAge" class="form-control" />
-    <form-control-messages input="submitForm.animalAge"></form-control-messages>
+    <input type="number" min="0" max="100" step="1" id="animal-age" ng-model="model.animalAge" name="animalAge" class="form-control" />
+    <form-control-messages input="submitForm.animalAge">
+      <li ng-message="min">Noch nicht geborene Tiere können leider nicht verliehen werden.</li>
+      <li ng-message="max">Dein Tier ist leider zu alt, um es zu verleihen. Das höchste akzeptierte Alter beträgt 100 Jahre</li>
+    </form-control-messages>
   </div>
 
   <div class="form-group" error-classes="submitForm.description">

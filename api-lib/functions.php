@@ -1,6 +1,7 @@
 <?php
 
 function sendSuccessResponse( $data, $httpStatus = 200 ){
+	header('Content-Type: application/json', true);
 	http_response_code( $httpStatus );
 	echo json_encode( [
 		'success' => true,
@@ -15,6 +16,7 @@ function sendErrorResponse( $errorCode, $httpStatus = 400 ){
 		'error' => $errorCode
 	];
 
+	header('Content-Type: application/json', true);
 	http_response_code( $httpStatus );
 	echo json_encode( $data );
 	die();

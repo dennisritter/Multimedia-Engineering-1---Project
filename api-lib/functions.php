@@ -51,3 +51,17 @@ function pdoGenerateWritingStatement ( PDO $pdo, $before, $after, array $data ) 
 
 	return $stmt;
 }
+
+function filterResponseData ( array $data ) {
+	$data['id'] = (int) $data['id'];
+	$data['zipCode'] = (int) $data['zipCode'];
+	$data['animalAge'] = (int) $data['animalAge'];
+
+	if ( $data['latitude'] !== null )
+		$data['latitude'] = (float) $data['latitude'];
+
+	if ( $data['longitude'] !== null )
+		$data['longitude'] = (float) $data['longitude'];
+
+	return $data;
+}

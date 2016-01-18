@@ -13,6 +13,7 @@ function getResourceController ( $id ) {
 		if ( $entry === false || !is_array( $entry ) )
 			sendErrorResponse( 'entryNotFound', 404 );
 
+		$entry = filterResponseData( $entry );
 		sendSuccessResponse( $entry );
 	} catch ( PDOException $e ) {
 		sendErrorResponse( 'serverError', 500 );
@@ -28,7 +29,7 @@ function getCollectionController () {
 
 		$results = [];
 		while ( $row = $stmt->fetch( PDO::FETCH_ASSOC ) ) {
-			$results[] = $row;
+			$results[] = filterResponseData( $row );
 		}
 
 		sendSuccessResponse( $results );
@@ -45,8 +46,8 @@ function getController ( $id ) {
 	}
 }
 
-function postController ( array $data ) {
-	$data = validateData( $data, true );
+function postController ( $data ) {
+	$data = validateData( $data );
 	//geokoordinaten berechnen -> longitude, latitude in geocoding.php auslagern
 	//$data = geocode( $data );
 	$pdo = getConnection();
@@ -61,11 +62,11 @@ function postController ( array $data ) {
 	}
 }
 
-function putController ( $id, array $data ) {
+function putController ( $id, $data ) {
 	if ( $id < 0 )
 		sendErrorResponse( "noIdSpecified", 400 );
 
-	$data = validateData( $data, false );
+	$data = validateData( $data );
 	$pdo = getConnection();
 	try {
 		$stmt = pdoGenerateWritingStatement( $pdo, 'UPDATE userdata SET', 'WHERE id = :id;', $data );

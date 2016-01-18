@@ -70,6 +70,10 @@
 
             <li ng-message="descriptionNotAString">Die Beschreibung muss aus einer Zeichenkette bestehen.</li>
             <li ng-message="descriptionStringTooLong">Der Beschreibungstext darf nicht länger als 512 Zeichen sein.</li>
+
+            <li ng-message="unknownError">Ein unbekannter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.</li>
+            <li ng-message="serverError">Ein Server-Fehler ist aufgetreten, bitte versuchen Sie es später erneut.</li>
+            <li ng-message="dateRangeInverted">Das Enddatum muss hinter dem Startdatum liegen.</li>
           </ul>
           <loading-animation ng-if="messages.loading"></loading-animation>
         </div>

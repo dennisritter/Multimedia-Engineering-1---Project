@@ -45,6 +45,7 @@ function validateIntRange( $property, $value, $min, $max, $required = true ) {
 }
 
 function validateDate ( $value, $property ) {
+	$value = substr( $value, 0, 10 );
 	$regex = '/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/';
 	$matches = [];
 	if ( preg_match( $regex, $value, $matches ) !== 1 )
@@ -64,6 +65,14 @@ function validateDate ( $value, $property ) {
 	return $date->format('Y-m-d');
 }
 
+function validateDates ( $start, $end ) {
+	$dateStart = new DateTime($start);
+	$dateEnd = new DateTime($end);
+
+	if ( $dateEnd <= $dateStart )
+		sendErrorResponse('dateRangeInverted', 400);
+}
+
 function validateEmail ( $value ) {
 	$value = validateStringLength( 'email', $value, 6, 64 );
 
@@ -73,7 +82,7 @@ function validateEmail ( $value ) {
 	return $value;
 }
 
-function validateData( $data, $new = false ) {
+function validateData( $data ) {
 	if ( $data === null )
 		sendErrorResponse('dataNotJson', 400);
 
@@ -97,6 +106,8 @@ function validateData( $data, $new = false ) {
 	$data['description'] = validateStringLength( 'description', $data['description'], 0, 512, false );
 	$data['email'] = validateEmail( $data['email'] );
 	$data['phone'] = validateStringLength( 'phone', $data['phone'], 3, 16 );
+
+	validateDates( $data['dateStart'], $data['dateEnd'] );
 
 	return $data;
 }

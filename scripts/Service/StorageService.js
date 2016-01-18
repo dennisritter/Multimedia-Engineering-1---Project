@@ -37,7 +37,11 @@ angular.module('petsitting').service( 'StorageService', [ '$http', '$q', functio
       method: "GET"
     } )
       .success( function ( response ) {
-        defer.resolve( response.data );
+        var data = [];
+        for ( var i = 0; i < response.data.length; i++ ) {
+          data.push( prepareResponseData( response.data[i] ) );
+        }
+        defer.resolve( data );
       } )
       .error( function( response ){
         defer.reject( response );
@@ -62,7 +66,8 @@ angular.module('petsitting').service( 'StorageService', [ '$http', '$q', functio
       }
     } )
       .success( function ( response ) {
-        defer.resolve( response.data );
+        var data = prepareResponseData( response.data );
+        defer.resolve( data );
       } )
       .error( function( response ){
         defer.reject( response );
@@ -80,15 +85,16 @@ angular.module('petsitting').service( 'StorageService', [ '$http', '$q', functio
   var update = function ( id, data ) {
     var defer = $q.defer();
     $http({
-      url:"/api/index.php",
-      method:"PUT",
+      url: "/api/index.php",
+      method: "PUT",
       data: data,
-      params:{
+      params: {
         id: id
       }
     })
-      .success( function( response ){
-        defer.resolve( response.data );
+      .success( function( response ) {
+        var data = prepareResponseData( response.data );
+        defer.resolve( data );
       } )
       .error( function( response ){
         defer.reject( response );
@@ -111,8 +117,9 @@ angular.module('petsitting').service( 'StorageService', [ '$http', '$q', functio
       method:"POST",
       data: data
     })
-      .success( function( response ){
-        defer.resolve( response.data );
+      .success( function( response ) {
+        var data = prepareResponseData( response.data );
+        defer.resolve( data );
       } )
       .error( function( response ){
         defer.reject( response );
@@ -144,6 +151,17 @@ angular.module('petsitting').service( 'StorageService', [ '$http', '$q', functio
       });
 
     return defer.promise;
+  };
+
+  /**
+   * Prepares the data coming from the server for the application
+   * @param     data      The unfiltered data / response body
+   * @return              The filtered data
+   */
+  var prepareResponseData = function ( data ) {
+    data.dateStart = new Date( data.dateStart );
+    data.dateEnd = new Date( data.dateEnd );
+    return data;
   };
 
   return {

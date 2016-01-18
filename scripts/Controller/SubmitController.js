@@ -4,6 +4,8 @@ angular.module('petsitting').controller( 'SubmitController', [ '$scope', 'Storag
   $scope.model = StorageService.getEmptyModel();
   $scope.now = new Date();
   $scope.animalTypes = AnimalTypes;
+  $scope.locked = false;
+  $scope.newItem = true;
 
   $scope.messages = new FormMessages({
     saved: false,
@@ -12,8 +14,21 @@ angular.module('petsitting').controller( 'SubmitController', [ '$scope', 'Storag
   });
 
   var initData = function ( id ) {
-
+    $scope.locked = true;
+    $scope.newItem = false;
+    StorageService.getSingle( id )
+      .then( function ( data ) {
+        $scope.model = data;
+        $scope.locked = false;
+      } )
+      .catch( function ( data ) {
+        $scope.messages.handleErrorData( data );
+      } );
   };
+
+  if ( $routeParams.id && $routeParams.id > 0 ) {
+    initData( $routeParams.id );
+  }
 
   $scope.save = function () {
     var form = $scope.submitForm;
@@ -34,14 +49,26 @@ angular.module('petsitting').controller( 'SubmitController', [ '$scope', 'Storag
     }
 
     $scope.messages.loadingOn();
-    //Fallunterscheidung ob persist oder update (über url)
-    StorageService.persist( $scope.model )
-      .then( function () {
-        $scope.messages.saved = true;
-      }, function ( data ) {
-        $scope.messages.handleErrorData( data );
-      } )
-      .finally( $scope.messages.loadingOff );
+    var successCallback = function ( data ) {
+      $scope.messages.saved = true;
+      $scope.messages.loadingOff();
+      $scope.model = data;
+    };
+
+    var errorCallback = function ( data ) {
+      $scope.messages.handleErrorData( data );
+      $scope.messages.loadingOff();
+    };
+
+    $scope.messages.reset();
+
+    if ( $scope.newItem ) {
+      StorageService.persist( $scope.model )
+        .then( successCallback, errorCallback );
+    } else {
+      StorageService.update( $scope.model.id, $scope.model )
+        .then( successCallback, errorCallback );
+    }
   };
 
 } ] );

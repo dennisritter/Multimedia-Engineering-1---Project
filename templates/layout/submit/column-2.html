@@ -48,6 +48,9 @@
   </div>
 
   <div class="form-group">
-    <button type="submit" class="btn btn-green btn-lg btn-block" ng-class="{ disabled: !submitForm.$valid, 'btn-red': !submitForm.$valid }">Tier einstellen</button>
+    <button type="submit" class="btn btn-green btn-lg btn-block" ng-class="{ disabled: !submitForm.$valid, 'btn-red': !submitForm.$valid }">
+      <span ng-if="newItem">Tier einstellen</span>
+      <span ng-if="!newItem">Daten aktualisieren</span>
+    </button>
   </div>
 </div>

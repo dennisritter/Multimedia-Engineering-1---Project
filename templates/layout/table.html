@@ -24,8 +24,8 @@
       <td class="hidden-xs">{{user.animalName}}</td>
       <td class="hidden-xs">{{user.animalAge}}</td>
       <td>
-        <a href="/submit"><i class="fa fa-edit"></i></a>
-        <a><i class="fa fa-trash"></i></a>
+        <a href="/edit/{{user.id}}"><i class="fa fa-edit"></i></a>
+        <a ng-click="remove( user.id );"><i class="fa fa-trash"></i></a>
       </td>
     </tr>
     <!-- Details row start-->

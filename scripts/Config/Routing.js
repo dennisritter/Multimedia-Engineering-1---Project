@@ -9,6 +9,10 @@ angular.module( 'petsitting' ).config( [ '$routeProvider', '$locationProvider', 
       templateUrl: 'layout/submit.html',
       activeTab: 'submit'
     } )
+    .when( '/edit/:id', {
+      templateUrl: 'layout/submit.html',
+      activeTab: 'submit'
+    } )
     .when( '/table', {
       templateUrl: 'layout/table.html',
       activeTab: 'table'

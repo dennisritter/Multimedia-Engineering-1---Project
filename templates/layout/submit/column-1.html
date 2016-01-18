@@ -1,10 +1,10 @@
 <div class="col-xs-12 col-sm-6">
   <h2>Angaben zur Verleihung</h2>
 
-  <!-- TODO: Add maxlength to form validation -->
+  <!-- TODO: ng-model in keys von emptyModel umbenennen-->
   <div class="form-group" error-classes="submitForm.ownerFirstName">
     <label for="owner-first-name">Vorname</label>
-    <input type="text" maxlength="64" id="owner-first-name" name="ownerFirstName" class="form-control" ng-model="model.ownerFirstName" required />
+    <input type="text" maxlength="64" id="owner-first-name" name="ownerFirstName" class="form-control" ng-model="model.firstName" required />
     <form-control-messages input="submitForm.ownerFirstName">
       <li ng-message="maxlength">Der eingegebene Text darf nicht länger als 64 Zeichen sein.</li>
     </form-control-messages>
@@ -13,7 +13,7 @@
 
   <div class="form-group" error-classes="submitForm.ownerLastName">
     <label for="owner-last-name">Nachname</label>
-    <input type="text" maxlength="64" id="owner-last-name" name="ownerLastName" class="form-control" ng-model="model.ownerLastName" required/>
+    <input type="text" maxlength="64" id="owner-last-name" name="ownerLastName" class="form-control" ng-model="model.lastName" required/>
     <form-control-messages input="submitForm.ownerLastName">
       <li ng-message="maxlength">Der eingegebene Text darf nicht länger als 64 Zeichen sein.</li>
     </form-control-messages>
@@ -21,7 +21,7 @@
 
   <div class="form-group" error-classes="submitForm.ownerEmail">
     <label for="owner-email">E-Mail-Adresse</label>
-    <input type="email" maxlength="64" id="owner-email" name="ownerEmail" class="form-control" ng-model="model.ownerEmail" required/>
+    <input type="email" maxlength="64" id="owner-email" name="ownerEmail" class="form-control" ng-model="model.email" required/>
     <form-control-messages input="submitForm.ownerEmail">
       <li ng-message="maxlength">Der eingegebene Text darf nicht länger als 64 Zeichen sein.</li>
     </form-control-messages>
@@ -29,7 +29,7 @@
 
   <div class="form-group" error-classes="submitForm.ownerPhone">
     <label for="owner-phone">Telefon</label>
-    <input type="tel" maxlength="16" id="owner-phone" name="ownerPhone" class="form-control" ng-model="model.ownerPhone" required/>
+    <input type="tel" maxlength="16" id="owner-phone" name="ownerPhone" class="form-control" ng-model="model.phone" required/>
     <form-control-messages input="submitForm.ownerPhone">
       <li ng-message="maxlength">Die Telefonnummer darf höchstens 16 Ziffern beinhalten.</li>
     </form-control-messages>

@@ -34,6 +34,7 @@ angular.module('petsitting').controller( 'SubmitController', [ '$scope', 'Storag
     }
 
     $scope.messages.loadingOn();
+    //Fallunterscheidung ob persist oder update (über url)
     StorageService.persist( $scope.model )
       .then( function () {
         $scope.messages.saved = true;

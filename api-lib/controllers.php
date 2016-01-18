@@ -65,6 +65,7 @@ function putController ( $id, array $data ) {
 		sendErrorResponse( "noIdSpecified", 400 );
 
 	$data = validateData( $data, false );
+	$data = geocode( $data );
 	$pdo = getConnection();
 	try {
 		$stmt = pdoGenerateWritingStatement( $pdo, 'UPDATE userdata SET', 'WHERE id = :id;', $data );

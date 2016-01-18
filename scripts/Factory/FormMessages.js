@@ -26,6 +26,14 @@ angular.module('petsitting').factory('FormMessages', function () {
       $this.loading = false;
     };
 
+    $this.handleErrorData = function ( data ) {
+      if ( data.error ) {
+        $this[ data.error ] = true;
+      } else {
+        $this.unknownError = true;
+      }
+    };
+
     $this.reset();
   };
 } );

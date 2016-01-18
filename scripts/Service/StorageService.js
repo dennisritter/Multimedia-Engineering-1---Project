@@ -1,4 +1,4 @@
-angular.module('petsitting').service( 'StorageService', [ '$http', '$q', '$timeout', function ( $http, $q, $timeout ) {
+angular.module('petsitting').service( 'StorageService', [ '$http', '$q', function ( $http, $q ) {
 
   var emptyModel = {
     "firstName": "",

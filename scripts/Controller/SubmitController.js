@@ -1,4 +1,5 @@
-angular.module('petsitting').controller( 'SubmitController', [ '$scope', 'StorageService', 'FormMessages', 'AnimalTypes', function ( $scope, StorageService, FormMessages, AnimalTypes ) {
+angular.module('petsitting').controller( 'SubmitController', [ '$scope', 'StorageService', 'FormMessages', 'AnimalTypes', '$routeParams',
+  function ( $scope, StorageService, FormMessages, AnimalTypes, $routeParams ) {
 
   $scope.model = StorageService.getEmptyModel();
   $scope.now = new Date();
@@ -9,6 +10,10 @@ angular.module('petsitting').controller( 'SubmitController', [ '$scope', 'Storag
     dataInvalid: false,
     unknownError: false
   });
+
+  var initData = function ( id ) {
+
+  };
 
   $scope.save = function () {
     var form = $scope.submitForm;
@@ -33,11 +38,7 @@ angular.module('petsitting').controller( 'SubmitController', [ '$scope', 'Storag
       .then( function () {
         $scope.messages.saved = true;
       }, function ( data ) {
-        if ( data.error ) {
-          $scope.messages[ data.error ] = true;
-        } else {
-          data.messages.unknownError = true;
-        }
+        $scope.messages.handleErrorData( data );
       } )
       .finally( $scope.messages.loadingOff );
   };

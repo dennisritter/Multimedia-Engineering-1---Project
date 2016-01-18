@@ -46,10 +46,9 @@ function getController ( $id ) {
 	}
 }
 
-function postController ( $data ) {
+function postController ( array $data ) {
 	$data = validateData( $data );
-	//geokoordinaten berechnen -> longitude, latitude in geocoding.php auslagern
-	//$data = geocode( $data );
+	$data = geocode( $data );
 	$pdo = getConnection();
 	try {
 		$stmt = pdoGenerateWritingStatement( $pdo, 'INSERT INTO userdata SET', ';', $data );
@@ -65,8 +64,9 @@ function postController ( $data ) {
 function putController ( $id, $data ) {
 	if ( $id < 0 )
 		sendErrorResponse( "noIdSpecified", 400 );
-
+	
 	$data = validateData( $data );
+	$data = geocode( $data );
 	$pdo = getConnection();
 	try {
 		$stmt = pdoGenerateWritingStatement( $pdo, 'UPDATE userdata SET', 'WHERE id = :id;', $data );

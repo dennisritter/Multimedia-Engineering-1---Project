@@ -74,6 +74,9 @@ function validateEmail ( $value ) {
 }
 
 function validateData( $data, $new = false ) {
+	if ( $data === null )
+		sendErrorResponse('dataNotJson', 400);
+
 	$reqProps = [ 'firstName', 'lastName', 'city', 'zipCode', 'street', 'dateStart', 'dateEnd', 'animalType', 'animalName', 'email', 'phone' ];
 
 	foreach ( $reqProps as $property )
@@ -90,7 +93,7 @@ function validateData( $data, $new = false ) {
 	$data['animalType'] = validateStringLength( 'animalType', $data['animalType'], 2, 64 );
 	$data['animalBreed'] = validateStringLength( 'animalBreed', $data['animalBreed'], 2, 64, false );
 	$data['animalName'] = validateStringLength( 'animalName', $data['animalName'], 2, 64 );
-	$data['animalAge'] = validateIntRange( 'animalAge', $data['animalAge'], 0, 100 );
+	$data['animalAge'] = validateIntRange( 'animalAge', $data['animalAge'], 0, 100, false );
 	$data['description'] = validateStringLength( 'description', $data['description'], 0, 512, false );
 	$data['email'] = validateEmail( $data['email'] );
 	$data['phone'] = validateStringLength( 'phone', $data['phone'], 3, 16 );

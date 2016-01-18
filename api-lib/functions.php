@@ -3,10 +3,14 @@
 function sendSuccessResponse( $data, $httpStatus = 200 ){
 	header('Content-Type: application/json', true);
 	http_response_code( $httpStatus );
-	echo json_encode( [
-		'success' => true,
-		'data' => $data
-	] );
+	$responseBody = [
+		'success' => true
+	];
+
+	if ( $data !== null )
+		$responseBody['data'] = $data;
+
+	echo json_encode( $responseBody );
 	die();
 }
 
@@ -27,9 +31,10 @@ function pdoGenerateWritingStatement ( PDO $pdo, $before, $after, array $data ) 
 	$sql = $before . ' ';
 
 	foreach ( $properties as $prop ) {
-		$sql .= sprintf( '%s = :%s ', $prop, $prop );
+		$sql .= sprintf( '%s = :%s, ', $prop, $prop );
 	}
 
+	$sql = substr( $sql, 0, -2 ) . ' ';
 	$sql .= $after;
 	$stmt = $pdo->prepare( trim( $sql ) );
 

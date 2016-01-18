@@ -10,8 +10,6 @@ require_once( LIB_DIR . '/controllers.php' );
 $content = file_get_contents( "php://input" );
 
 $data = json_decode( $content, true );
-if ( $data === null )
-	sendErrorResponse( 'dataNotJson', 400 );
 
 $id = array_key_exists( 'id', $_GET ) && is_numeric( $_GET['id'] )
 	? (int) $_GET['id']
@@ -28,7 +26,7 @@ switch ($_SERVER[ 'REQUEST_METHOD' ]) {
         putController( $id, $data );
         break;
     case 'DELETE':
-        deleteController( $id, $data );
+        deleteController( $id );
         break;
     default:
         sendErrorResponse("methodNotAllowed", 405);

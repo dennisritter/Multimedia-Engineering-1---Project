@@ -5,7 +5,10 @@ function validateExistence ( $property, $data ) {
 		sendErrorResponse( $property . 'Missing', 400 );
 }
 
-function validateStringLength ( $property, $value, $min, $max ) {
+function validateStringLength ( $property, $value, $min, $max, $required = true ) {
+	if ( !$required and empty( $value ) )
+		return null;
+
 	if ( !is_string( $value ) )
 		sendErrorResponse( $property . 'NotAString' );
 
@@ -25,7 +28,10 @@ function validatePattern( $property, $value, $regex ){
 	return $value;
 }
 
-function validateIntRange( $property, $value, $min, $max ) {
+function validateIntRange( $property, $value, $min, $max, $required = true ) {
+	if ( !$required and !is_int( $value ) )
+		return null;
+
 	if ( !is_int( $value ) )
 		sendErrorResponse( $property . 'NotAnInt' );
 
@@ -76,16 +82,16 @@ function validateData( $data, $new = false ) {
 	$data['firstName'] = validateStringLength( 'firstName', $data['firstName'], 2, 64 );
 	$data['lastName'] = validateStringLength( 'lastName', $data['lastName'], 2, 64 );
 	$data['city'] = validateStringLength( 'city', $data['city'], 2, 64 );
-	$data['zipCode'] = validateIntRange( 'zipcode', $data['zipCode'], 1001, 9998 );
+	$data['zipCode'] = validateIntRange( 'zipCode', $data['zipCode'], 1001, 99998 );
 	$data['street'] = validateStringLength( 'street', $data['street'], 5, 64 );
 	$data['street'] = validatePattern( 'street', $data['street'], '/^.* [0-9]+[a-z]?/' );
 	$data['dateStart'] = validateDate( $data['dateStart'], 'dateStart' );
 	$data['dateEnd'] = validateDate( $data['dateEnd'], 'dateEnd' );
 	$data['animalType'] = validateStringLength( 'animalType', $data['animalType'], 2, 64 );
-	$data['animalBreed'] = validateStringLength( 'animalBreed', $data['animalBreed'], 2, 64 );
+	$data['animalBreed'] = validateStringLength( 'animalBreed', $data['animalBreed'], 2, 64, false );
 	$data['animalName'] = validateStringLength( 'animalName', $data['animalName'], 2, 64 );
 	$data['animalAge'] = validateIntRange( 'animalAge', $data['animalAge'], 0, 100 );
-	$data['description'] = validateStringLength( 'description', $data['description'], 0, 512 );
+	$data['description'] = validateStringLength( 'description', $data['description'], 0, 512, false );
 	$data['email'] = validateEmail( $data['email'] );
 	$data['phone'] = validateStringLength( 'phone', $data['phone'], 3, 16 );
 

@@ -48,13 +48,7 @@
               </ul>
             </div>
           </div>
-          <div class="col-xs-12 col-sm-6 col-md-5">
-            <ui-gmap-google-map center="user.position" zoom="map.zoom">
-              <ui-gmap-marker idKey="user.id" coords="user.position"></ui-gmap-marker>
-            </ui-gmap-google-map>
-          </div>
           <div class="hidden-xs hidden-sm col-md-2">
-            <img src="/img/husky.jpg" class="img-rounded"/>
             <address>
               <ul>
                 <li>{{user.firstName}} {{user.lastName}}</li>
@@ -62,6 +56,11 @@
                 <li>{{user.zipCode}} {{user.city}}</li>
               </ul>
             </address>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-5">
+            <ui-gmap-google-map center="user.position" zoom="map.zoom">
+              <ui-gmap-marker idKey="user.id" coords="user.position"></ui-gmap-marker>
+            </ui-gmap-google-map>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-5">
             <div class="pet-desc">

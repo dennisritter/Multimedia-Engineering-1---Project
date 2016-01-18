@@ -5,7 +5,9 @@ define( 'LIB_DIR', __DIR__ . '/../../api-lib' );
 require_once( LIB_DIR . '/connection.php' );
 require_once( LIB_DIR . '/functions.php' );
 require_once( LIB_DIR . '/validation.php' );
+require_once( LIB_DIR . '/geocoding.php' );
 require_once( LIB_DIR . '/controllers.php' );
+
 
 $content = file_get_contents( "php://input" );
 

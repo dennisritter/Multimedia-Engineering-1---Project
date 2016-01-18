@@ -47,6 +47,8 @@ function getController ( $id ) {
 
 function postController ( array $data ) {
 	$data = validateData( $data, true );
+	//geokoordinaten berechnen -> longitude, latitude in geocoding.php auslagern
+	//$data = geocode( $data );
 	$pdo = getConnection();
 	try {
 		$stmt = pdoGenerateWritingStatement( $pdo, 'INSET INTO userdata SET', ';', $data );

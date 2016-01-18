@@ -3,6 +3,7 @@
 $credsFile = __DIR__ . '/config/mysql-credentials.php';
 
 define( 'TABLE_NAME', 'petsitting' );
+define( 'GOOGLE_MAPS_KEY', 'AIzaSyCZCAxrYdcAGtZwSmuZEMzSH3dRqsu_NQs' );
 
 if ( !file_exists( $credsFile ) )
 	throw new Exception( "Credentials file is not available!" );

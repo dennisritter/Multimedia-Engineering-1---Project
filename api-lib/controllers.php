@@ -64,7 +64,7 @@ function postController ( array $data ) {
 function putController ( $id, $data ) {
 	if ( $id < 0 )
 		sendErrorResponse( "noIdSpecified", 400 );
-	
+
 	$data = validateData( $data );
 	$data = geocode( $data );
 	$pdo = getConnection();

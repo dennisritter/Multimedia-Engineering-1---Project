@@ -1,11 +1,12 @@
-angular.module('petsitting').controller( 'SubmitController', [ '$scope', 'StorageService', 'FormMessages', 'AnimalTypes', '$routeParams',
-  function ( $scope, StorageService, FormMessages, AnimalTypes, $routeParams ) {
+angular.module('petsitting').controller( 'SubmitController', [ '$scope', 'StorageService', 'FormMessages', 'AnimalTypes', '$routeParams', '$timeout', '$location',
+  function ( $scope, StorageService, FormMessages, AnimalTypes, $routeParams, $timeout, $location ) {
 
   $scope.model = StorageService.getEmptyModel();
   $scope.now = new Date();
   $scope.animalTypes = AnimalTypes;
   $scope.locked = false;
   $scope.newItem = true;
+  $scope.btnDisabled = false;
 
   var initMessages = function () {
     $scope.messages = new FormMessages({
@@ -53,15 +54,25 @@ angular.module('petsitting').controller( 'SubmitController', [ '$scope', 'Storag
     }
 
     $scope.messages.loadingOn();
+    $scope.btnDisabled = true;
     var successCallback = function ( data ) {
       $scope.messages.saved = true;
       $scope.messages.loadingOff();
       $scope.model = data;
+
+      if ( !$routeParams.id || $routeParams.id < 1 ) {
+        $timeout( function () {
+          $location.path( '/edit/' + data.id );
+        }, 2000 );
+      } else {
+        $scope.btnDisabled = false;
+      }
     };
 
     var errorCallback = function ( data ) {
       $scope.messages.handleErrorData( data );
       $scope.messages.loadingOff();
+      $scope.btnDisabled = false;
     };
 
     initMessages();

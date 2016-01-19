@@ -18,6 +18,7 @@ function validateStringLength ( $property, $value, $min, $max, $required = true 
 	if ( strlen( $value ) > $max )
 		sendErrorResponse( $property . 'StringTooLong' );
 
+	$value = htmlspecialchars( $value );
 	return $value;
 }
 

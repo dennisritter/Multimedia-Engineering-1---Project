@@ -96,7 +96,7 @@ angular.module('petsitting').service( 'StorageService', [ '$http', '$q', functio
         var data = prepareResponseData( response.data );
         defer.resolve( data );
       } )
-      .error( function( response ){
+      .error( function( response ){ console.log(response);
         defer.reject( response );
       } );
 

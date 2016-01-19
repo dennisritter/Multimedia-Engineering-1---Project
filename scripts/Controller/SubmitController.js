@@ -7,11 +7,15 @@ angular.module('petsitting').controller( 'SubmitController', [ '$scope', 'Storag
   $scope.locked = false;
   $scope.newItem = true;
 
-  $scope.messages = new FormMessages({
-    saved: false,
-    dataInvalid: false,
-    unknownError: false
-  });
+  var initMessages = function () {
+    $scope.messages = new FormMessages({
+      saved: false,
+      dataInvalid: false,
+      unknownError: false
+    });
+  };
+
+  initMessages();
 
   var initData = function ( id ) {
     $scope.locked = true;
@@ -60,7 +64,7 @@ angular.module('petsitting').controller( 'SubmitController', [ '$scope', 'Storag
       $scope.messages.loadingOff();
     };
 
-    $scope.messages.reset();
+    initMessages();
 
     if ( $scope.newItem ) {
       StorageService.persist( $scope.model )

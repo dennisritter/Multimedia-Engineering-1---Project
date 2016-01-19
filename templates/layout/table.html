@@ -63,7 +63,7 @@
             </ui-gmap-google-map>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-5">
-            <div class="pet-desc">
+            <div class="pet-desc" ng-if="user.description != null">
               <p>{{user.description}}</p>
             </div>
             <button ng-click="isVisible = !isVisible" type="button" class="btn btn-green btn-block">Kontakt

@@ -9,6 +9,7 @@ angular.module('petsitting').controller('TableController', ['$scope', 'StorageSe
           latitude: data[i].latitude,
           longitude: data[i].longitude
         };
+        data[i].center = angular.copy( data[i].position );
       }
       $scope.users = data;
     });

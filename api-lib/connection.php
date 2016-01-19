@@ -14,10 +14,12 @@ global $connection;
 
 try {
 	$connection = new PDO( sprintf( 'mysql:dbname=%s;host=%', $creds['dbname'], $creds['host'] ), $creds['username'], $creds['password'] );
+	$connection->setAttribute( PDO::ATTR_EMULATE_PREPARES, false );
 	$connection->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 	$connection->exec('SET NAMES "utf8"');
 } catch ( PDOException $e ) {
-	die("Could not connect to database." . $e->getMessage());
+	error_log( $e->getMessage() );
+	sendErrorResponse('serverError', 500);
 }
 
 function getConnection () {

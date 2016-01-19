@@ -55,7 +55,9 @@ function pdoGenerateWritingStatement ( PDO $pdo, $before, $after, array $data ) 
 function filterResponseData ( array $data ) {
 	$data['id'] = (int) $data['id'];
 	$data['zipCode'] = (int) $data['zipCode'];
-	$data['animalAge'] = (int) $data['animalAge'];
+	$data['animalAge'] = ( $data['animalAge'] == 0 )
+		? null
+		: (int) $data['animalAge'];
 
 	if ( $data['latitude'] !== null )
 		$data['latitude'] = (float) $data['latitude'];

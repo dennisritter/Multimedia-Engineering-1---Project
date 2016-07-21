@@ -6,7 +6,7 @@ function getResourceController ( $id ) {
 
 	try {
 		$stmt = $pdo->prepare( $sql );
-		$stmt->bindValue( ':id', $id );
+		$stmt->bindValue( ':id', $id, PDO::PARAM_INT );
 		$stmt->execute();
 		$entry = $stmt->fetch( PDO::FETCH_ASSOC );
 

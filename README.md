@@ -1,5 +1,5 @@
 # Multimedia-Engineering-1---Project
-This project was part of the fourth semester course 'Multimedia Engineering 1' at 'Beuth University of Applied Sciences Berlin'.
+This project was part of the third semester course 'Multimedia Engineering 1' at 'Beuth University of Applied Sciences Berlin'.
 
 <b>Name:</b> Petsitting<br/>
 <b>Authors:</b> Jannik Portz, Dennis Ritter<br/>
